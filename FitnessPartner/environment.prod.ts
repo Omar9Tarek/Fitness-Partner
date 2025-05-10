@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'fitness-partner-no76.vercel.app' // backend URL
+  apiUrl: 'https://fitness-partner-no76.vercel.app' // backend URL
 };
