@@ -10,7 +10,7 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root'
 })
 export class ProductServicesService {
-  private productsUrl = `https://fitness-partner-back.vercel.app/products` //private productsUrl = 'http://localhost:3000/products';
+  private productsUrl = `${environment.apiUrl}/products` //private productsUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

@@ -9,7 +9,7 @@ import { environment } from '../../../environment.prod';
   providedIn: 'root',
 })
 export class UsersService {
-  private apiUrl = `${environment.apiUrl}/`;//private apiUrl = 'http://localhost:3000';
+  private apiUrl = `${environment.apiUrl}`;//private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
