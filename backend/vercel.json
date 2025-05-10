@@ -2,25 +2,32 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/main.ts",
+      "src": "src/serverless.ts",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "src/main.ts",
+      "dest": "src/serverless.ts",
       "methods": [
         "GET",
-        "POST",
+        "HEAD",
         "PUT",
-        "DELETE",
         "PATCH",
+        "POST",
+        "DELETE",
         "OPTIONS"
       ],
       "headers": {
-        "Access-Control-Allow-Origin": "*"
+        "Access-Control-Allow-Origin": "https://fitness-partner-eta.vercel.app",
+        "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization",
+        "Access-Control-Allow-Credentials": "true"
       }
     }
-  ]
+  ],
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
