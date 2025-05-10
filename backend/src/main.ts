@@ -30,7 +30,7 @@ async function bootstrap() {
 
   // CORS configuration
   app.enableCors({
-    origin: process.env.CORS_ORIGIN || 'https://fitness-partner-eta.vercel.app',
+    origin: 'https://fitness-partner-no76.vercel.app' ,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
     allowedHeaders: 'Content-Type,Authorization',
@@ -40,12 +40,12 @@ async function bootstrap() {
 //   if (process.env.NODE_ENV !== 'production') {
 //    await app.listen(3000);
 //  }
-  app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
-  // Start application
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  logger.log(`Application running on: http://localhost:${port}`);
-  logger.debug(`NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
+  // app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
+  // // Start application
+  // const port = process.env.PORT || 3000;
+  // await app.listen(port);
+  // logger.log(`Application running on: http://localhost:${port}`);
+  // logger.debug(`NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
 
   
 
