@@ -1,6 +1,6 @@
+// src/main.ts or src/serverless.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import * as dotenv from 'dotenv';
 import { ValidationPipe } from '@nestjs/common';
 import { Logger } from '@nestjs/common';
 
@@ -8,11 +8,6 @@ import { Logger } from '@nestjs/common';
 let app;
 
 async function bootstrap() {
-  // Only load dotenv in development
-  if (process.env.NODE_ENV !== 'production') {
-    dotenv.config();
-  }
-
   const logger = new Logger('Bootstrap');
   
   if (!app) {
@@ -23,21 +18,25 @@ async function bootstrap() {
       logger: ['log', 'error', 'warn', 'debug'],
     });
 
-    // CORS configuration
+    // CORS configuration with localhost:4200 included
+    const allowedOrigins = [
+      'https://fitnesspartner.vercel.app',  // Production frontend
+      'http://localhost:4200',                   // Angular local development
+      'http://localhost:3000',                   // Alternative local development
+    ];
+    
+    logger.log(`Configuring CORS for origins: ${allowedOrigins.join(', ')}`);
+    
     app.enableCors({
-      origin: [
-        'https://fitnesspartner.vercel.app',  //frontend
-        'http://localhost:4200',                   // Local development
-      ],
+      origin: allowedOrigins,
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
-      allowedHeaders: 'Content-Type,Authorization',
+      allowedHeaders: 'Content-Type,Authorization,X-Requested-With',
     });
 
     app.useGlobalPipes(new ValidationPipe({ 
       whitelist: true,
       transform: true,
-      forbidNonWhitelisted: true,
     }));
 
     // Only listen to a port in non-serverless environments
