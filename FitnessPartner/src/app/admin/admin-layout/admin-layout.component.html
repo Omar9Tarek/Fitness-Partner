@@ -31,16 +31,7 @@
             <i class="fas fa-dumbbell"></i> Trainers
           </a>
         </li>
-        <!-- <li>
-          <a routerLink="/admin/nutrition" routerLinkActive="active">
-            <i class="fas fa-apple-alt"></i> Nutrition
-          </a>
-        </li> -->
         <li>
-          <a routerLink="/admin/settings" routerLinkActive="active">
-            <i class="fas fa-cog"></i> Settings
-          </a>
-        </li>
       </ul>
     </nav>
   </aside>
@@ -55,25 +46,8 @@
         <span>{{ activeSectionTitle }}</span>
       </div>
       <div class="header-actions">
-        <!-- <div class="search-container">
-          <div class="search-type-selector">
-            <button [class.active]="searchType === 'email'" (click)="setSearchType('email')">Email</button>
-            <button [class.active]="searchType === 'id'" (click)="setSearchType('id')">ID</button>
-          </div>
-          <div class="search-bar">
-            <input 
-              type="text" 
-              [(ngModel)]="searchQuery" 
-              [placeholder]="'Search by ' + searchType + '...'" 
-              (input)="onSearch($event)">
-            <i class="fas fa-search"></i>
-            <button class="clear-search" *ngIf="searchQuery" (click)="clearSearch()">
-              <i class="fas fa-times"></i>
-            </button>
-          </div>
-        </div> -->
         <div class="admin-profile" (click)="toggleProfileMenu()">
-          <img src="assets/admin-avatar.png" alt="Admin">
+          <img src="assets/adminProfile.jfif" alt="Admin">
           <span>Admin</span>
           <i class="fas fa-chevron-down"></i>
           <div class="profile-dropdown" *ngIf="showProfileMenu">

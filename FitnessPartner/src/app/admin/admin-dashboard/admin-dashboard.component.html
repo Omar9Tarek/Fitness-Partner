@@ -17,11 +17,7 @@
 
   <!-- Stats Cards -->
   <div class="stats-grid">
-    <div
-      class="stat-card"
-      *ngFor="let stat of stats"
-      [ngClass]="'stat-' + stat.color"
-    >
+    <div class="stat-card" *ngFor="let stat of stats" [ngClass]="'stat-' + stat.color">
       <div class="stat-icon">
         <i class="fas fa-{{ stat.icon }}"></i>
       </div>
@@ -32,16 +28,10 @@
           <span *ngIf="stat.title.includes('Revenue')">{{ stat.value | currency }}</span>
           <span *ngIf="!stat.title.includes('Revenue')">{{ stat.value | number }}</span>
         </div>
-        <div
-          class="stat-change"
-          [ngClass]="{ positive: stat.change > 0, negative: stat.change < 0 }"
-        >
-          <i
-            class="fas"
-            [ngClass]="stat.change > 0 ? 'fa-arrow-up' : 'fa-arrow-down'"
-          ></i>
+        <div class="stat-change" [ngClass]="{ positive: stat.change > 0, negative: stat.change < 0 }">
+          <i class="fas" [ngClass]="stat.change > 0 ? 'fa-arrow-up' : 'fa-arrow-down'"></i>
           {{ stat.change }}% from last month
-          
+
           <!-- Add a note for active revenue -->
           <small *ngIf="stat.title === 'Active Revenue'" class="revenue-note">
             (Excluding cancelled orders)
@@ -50,10 +40,10 @@
       </div>
     </div>
 
-  
-  <!-- Add a more detailed revenue breakdown section if needed -->
- 
-      </div>
+
+    <!-- Add a more detailed revenue breakdown section if needed -->
+
+  </div>
 
   <!-- Quick Access Widgets -->
   <div class="widgets-row">
@@ -79,10 +69,7 @@
                 {{ product.price | currency : "EGP" : "symbol" : "1.2-2" }}
               </td>
               <td>
-                <span
-                  class="status"
-                  [ngClass]="product.inStock ? 'in-stock' : 'out-stock'"
-                >
+                <span class="status" [ngClass]="product.inStock ? 'in-stock' : 'out-stock'">
                   {{ product.inStock ? "In Stock" : "Out of Stock" }}
                 </span>
               </td>
@@ -115,10 +102,7 @@
               <td>{{ user.email }}</td>
               <td>{{ user.role }}</td>
               <td>
-                <span
-                  class="status"
-                  [ngClass]="user.active ? 'active' : 'inactive'"
-                >
+                <span class="status" [ngClass]="user.active ? 'active' : 'inactive'">
                   {{ user.active ? "Active" : "Inactive" }}
                 </span>
               </td>
@@ -147,10 +131,6 @@
       <a routerLink="/admin/orders" class="action-card">
         <i class="fas fa-clipboard-list"></i>
         <span>View Orders</span>
-      </a>
-      <a routerLink="/admin/settings" class="action-card">
-        <i class="fas fa-cog"></i>
-        <span>Settings</span>
       </a>
     </div>
   </div>

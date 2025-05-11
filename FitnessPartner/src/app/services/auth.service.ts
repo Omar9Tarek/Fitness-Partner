@@ -97,9 +97,14 @@ export class AuthService {
     return this.isLoggedInSubject.value;
   }
 
+  isLoggedInOrNot(): boolean {
+    const token = localStorage.getItem('access_token'); // Check if token exists
+    return !!token; // Return true if token exists, false otherwise
+  }
+
   // Method to check if user is authenticated, can be used in route guards
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!localStorage.getItem('access_token');
   }
 
   // Update your Angular auth.service.ts

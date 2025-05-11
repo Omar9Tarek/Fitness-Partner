@@ -22,7 +22,7 @@ import { DOCUMENT } from '@angular/common';
   templateUrl: './navbar.component.html',
 })
 export class NavBarComponent implements OnInit, OnDestroy {
-  language:string='عربي'
+  language: string = 'عربي';
   cart: any[] = [];
   cartTotal: number = 0;
   favoritesCount: number = 0;
@@ -90,7 +90,18 @@ export class NavBarComponent implements OnInit, OnDestroy {
   confirmLogout() {
     this.authService.logout();
     this.favoritesService.clearUserData();
-    this.router.navigate(['/login']);
+    if (this.authService.isLoggedInOrNot()) {
+      // Show the logout confirmation modal
+      const logoutModal = document.getElementById('logoutConfirmationModal');
+      if (logoutModal) {
+        // Ensure Bootstrap is available globally
+        const bootstrapModal = new (window as any).bootstrap.Modal(logoutModal);
+        bootstrapModal.show();
+      }
+    } else {
+      // Redirect to the login page if not logged in
+      this.router.navigate(['/login']);
+    }
   }
 
   // Method to manually refresh favorites count
@@ -108,5 +119,4 @@ export class NavBarComponent implements OnInit, OnDestroy {
     this.document.documentElement.lang = newLang;
     this.language = newLang === 'ar' ? 'En' : 'عربي';
   }
-  
 }
