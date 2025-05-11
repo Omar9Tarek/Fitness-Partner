@@ -26,7 +26,7 @@ async function bootstrap() {
     // CORS configuration
     app.enableCors({
       origin: [
-        'https://fitnesspartner.vercel.app',  // Your frontend
+        'https://fitnesspartner.vercel.app',  //frontend
         'http://localhost:3000',                   // Local development
       ],
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
