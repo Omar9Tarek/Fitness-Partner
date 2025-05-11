@@ -7,7 +7,7 @@
     {{ "nutrition.mealsPlanner.label" | translate }}
   </label>
   <select id="goal" class="form-select p-2 focus-ring focus-ring-warning border-warning border-2 fs-5"
-    [(ngModel)]="selectedGoal" (change)="onGoalChange()">
+    [(ngModel)]="selectedGoal" (change)="onGoalChange()" style="cursor: pointer;">
     <option value="" disabled selected>
       {{ "nutrition.mealsPlanner.option" | translate }}
     </option>
