@@ -6,6 +6,9 @@ import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../../environment.prod';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +17,7 @@ export class AuthService {
     !!localStorage.getItem('access_token')
   );
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = `${environment.apiUrl}/auth`; // || 'http://localhost:3000/auth';
 
   // Event emitter for cart synchronization
   private cartSyncRequired = new BehaviorSubject<boolean>(false);

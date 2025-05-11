@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { EnvironmentInjector, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError, finalize, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private apiUrl = 'http://localhost:3000/cart';
+  private apiUrl = `${environment.apiUrl}/cart` // private apiUrl = 'http://localhost:3000/cart';
   private cartItems: any[] = [];
   private cartSubject = new BehaviorSubject<any[]>([]);
   private totalSubject = new BehaviorSubject<number>(0);

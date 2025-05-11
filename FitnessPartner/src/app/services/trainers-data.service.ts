@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from '../../../environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TrainersDataService {
-  private apiUrl = `http://localhost:3000/trainers`;
+  private apiUrl = `${environment.apiUrl}/trainers`//private apiUrl = `http://localhost:3000/trainers`;
   
   constructor(
     private http: HttpClient,

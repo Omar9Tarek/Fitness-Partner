@@ -1,15 +1,4 @@
-// import { Module } from '@nestjs/common';
-// import { FavoritesController } from './favorites.controller';
-// import { FavoritesService } from './favorites.service';
-// import { MongooseModule } from '@nestjs/mongoose';
-// import { User, UserSchema } from '../users/schemas/user.schema';
 
-// @Module({
-//   imports: [MongooseModule.forFeature([{ name: User.name, schema: UserSchema }])],
-//   controllers: [FavoritesController],
-//   providers: [FavoritesService],
-// })
-// export class FavoritesModule {}
 import { Module } from '@nestjs/common';
 import { FavoritesController } from './favorites.controller';
 import { FavoritesService } from './favorites.service';

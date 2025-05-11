@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { UsersService } from './users.service';
+import { environment } from '../../../environment.prod';
+
 
 export interface UserMeasurement {
   userId: string;
@@ -22,7 +24,7 @@ export interface UserMeasurement {
   providedIn: 'root',
 })
 export class MeasurementsService {
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = `${environment.apiUrl}`;
 
   constructor(
     private http: HttpClient,

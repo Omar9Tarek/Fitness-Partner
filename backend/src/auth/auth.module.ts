@@ -10,7 +10,7 @@ import { EmailModule } from '../email/email.module';
 import { ConfigService } from '@nestjs/config';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { MailModule } from './mail/mail.module';
-import { User, UserSchema } from 'src/users/schemas/user.schema';
+import { User, UserSchema } from '../users/schemas/user.schema';
 import { Token, TokenSchema } from './entities/token.entity';
 @Module({
   imports: [

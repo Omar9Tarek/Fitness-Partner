@@ -4,12 +4,13 @@ import { firstValueFrom, Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { IProducts } from '../models/i-products';
 import { AuthService } from './auth.service';
+import { environment } from '../../../environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductServicesService {
-  private productsUrl = 'http://localhost:3000/products';
+  private productsUrl = `${environment.apiUrl}/products` //private productsUrl = 'http://localhost:3000/products';
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 

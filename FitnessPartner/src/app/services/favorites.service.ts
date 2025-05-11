@@ -4,12 +4,13 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AuthService } from './auth.service';
 import { tap, catchError, finalize } from 'rxjs/operators';
 import { IProducts } from '../models/i-products';
+import { environment } from '../../../environment.prod';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FavoritesService {
-  private apiUrl = 'http://localhost:3000/favorites';
+ private apiUrl = `${environment.apiUrl}/favorites`; //private apiUrl = 'http://localhost:3000/favorites';
   private favoritesSubject = new BehaviorSubject<any[]>([]);
   favorites$ = this.favoritesSubject.asObservable();
   private isLoadingFavorites = false;

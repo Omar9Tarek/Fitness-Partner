@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Workout } from '../models/workout.model';
+import { environment } from '../../../environment.prod';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WorkoutService {
-  private baseUrl = 'http://localhost:3000/workouts'; // Adjust if different
+  private baseUrl = `${environment.apiUrl}/workouts`; //private baseUrl = 'http://localhost:3000/workouts'; // Adjust if different
 
   constructor(private http: HttpClient) {}
 
