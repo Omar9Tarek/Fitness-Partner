@@ -20,14 +20,16 @@ export class AdminLayoutComponent implements OnInit {
   searchType: string = 'email'; // Default search type
   private searchSubject = new Subject<string>();
   Math = Math;
-  
+
   constructor(private router: Router, private authService: AuthService) {
     // Set up debounced search to prevent too many search queries
-    this.searchSubject.pipe(
-      debounceTime(300) // Wait for 300ms pause in events
-    ).subscribe(searchTerm => {
-      this.performSearch(searchTerm);
-    });
+    this.searchSubject
+      .pipe(
+        debounceTime(300) // Wait for 300ms pause in events
+      )
+      .subscribe((searchTerm) => {
+        this.performSearch(searchTerm);
+      });
   }
 
   ngOnInit() {
@@ -43,7 +45,6 @@ export class AdminLayoutComponent implements OnInit {
           if (url.includes('/admin/orders')) return 'Orders';
           if (url.includes('/admin/trainers')) return 'Trainers';
           if (url.includes('/admin/nutrition')) return 'Nutrition';
-          if (url.includes('/admin/settings')) return 'Settings';
           return 'Dashboard';
         })
       )
@@ -76,12 +77,12 @@ export class AdminLayoutComponent implements OnInit {
     const currentSection = this.activeSectionTitle.toLowerCase();
     const searchParams = {
       type: this.searchType,
-      query: query.trim()
+      query: query.trim(),
     };
-    
+
     // Navigate to the current section with search params
     this.router.navigate([`/admin/${currentSection}`], {
-      queryParams: searchParams
+      queryParams: searchParams,
     });
   }
 
