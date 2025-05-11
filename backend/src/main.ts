@@ -1,8 +1,7 @@
 // src/main.ts or src/serverless.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { ValidationPipe } from '@nestjs/common';
-import { Logger } from '@nestjs/common';
+import { ValidationPipe, Logger } from '@nestjs/common';
 
 // Global application instance for serverless environment
 let app;
@@ -18,22 +17,37 @@ async function bootstrap() {
       logger: ['log', 'error', 'warn', 'debug'],
     });
 
-    // CORS configuration with localhost:4200 included
+    // CORS configuration - extremely important for proper functioning
+    logger.log('Setting up CORS configuration');
+    
+    // Define allowed origins
     const allowedOrigins = [
       'https://fitnesspartner.vercel.app',  // Production frontend
       'http://localhost:4200',                   // Angular local development
-      'http://localhost:3000',                   // Alternative local development
     ];
     
-    logger.log(`Configuring CORS for origins: ${allowedOrigins.join(', ')}`);
-    
     app.enableCors({
-      origin: allowedOrigins,
+      origin: (origin, callback) => {
+        // Allow requests with no origin (like mobile apps, curl, Postman)
+        if (!origin) {
+          return callback(null, true);
+        }
+        
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+          callback(null, true);
+        } else {
+          logger.warn(`Blocked request from disallowed origin: ${origin}`);
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
       allowedHeaders: 'Content-Type,Authorization,X-Requested-With',
+      preflightContinue: false,
+      optionsSuccessStatus: 204
     });
 
+    // Add global validation pipe
     app.useGlobalPipes(new ValidationPipe({ 
       whitelist: true,
       transform: true,
