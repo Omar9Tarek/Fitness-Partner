@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse, HttpParams } from '@angular
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { User } from '../shared/utils/user';
-import { environment } from '../../../environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

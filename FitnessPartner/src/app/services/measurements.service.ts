@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { UsersService } from './users.service';
-import { environment } from '../../../environment.prod';
+import { environment } from '../../environments/environment';
 
 
 export interface UserMeasurement {

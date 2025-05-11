@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { tap, catchError, finalize, map } from 'rxjs/operators';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { environment } from '../../../environment.prod';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',

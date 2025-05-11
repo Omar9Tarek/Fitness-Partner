@@ -6,7 +6,7 @@ import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { jwtDecode } from 'jwt-decode';
-import { environment } from '../../../environment.prod';
+import { environment } from '../../environments/environment';
 
 
 @Injectable({
