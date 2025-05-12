@@ -138,13 +138,13 @@
 
 @media screen and (max-width: 576px) {
     .inner-carsul-height{
-        height: 40vh;
+        height: 45vh;
     }
     .text-overlay,
     .second-text-overlay {
-        width: 90vw;
-        height: 20vh;
-        padding: 0.8rem;
+        width: 80vw;
+        height: 40vh;
+        padding-top: 4rem;
     }
     .firstqutefont {
         font-size: 25px;
