@@ -163,11 +163,13 @@
     .inner-carsul-height{
         height: 45vh;
     }
-    .text-overlay,
-    .second-text-overlay {
+    .text-overlay{
         width: 80vw;
-        height: 40vh;
+        height: 50vh;
         padding-top: 4rem;
+    }
+    .second-text-overlay{
+        margin-top: -20px;
     }
     .firstqutefont {
         font-size: 25px;
@@ -317,10 +319,10 @@
   object-fit: cover;
 }
 
-.small-heading {
+/* .small-heading {
   font-size: 2.5rem;
-}
+} */
 
-.small-paragraph {
+/* .small-paragraph {
   font-size: 3.5rem;
-}
+} */
