@@ -15,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AdminUsersComponent implements OnInit {
   users: any[] = [];
-  roles = ['user', 'admin', 'moderator'];
+  roles = ['user', 'admin'];
   loading = false;
   error: string | null = null;
   selectedUser: any = null;
