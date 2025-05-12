@@ -1,25 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IMealPlan } from './../models/i-meal-plan';
+import { MEAL_PLANS } from '../public/meals-planner/meal-plans-data';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MealPlannerService {
-  private jsonUrl = 'http://localhost:3001/meal_plans';
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getAll(): Observable<IMealPlan[]> {
-    return this.http.get<IMealPlan[]>(this.jsonUrl);
+    return of(MEAL_PLANS);
   }
 
   getByTarget(goal: string): Observable<IMealPlan | undefined> {
-    return this.getAll().pipe(
-      map(plans =>
-        plans.find(p => p.target.toLowerCase() === goal.toLowerCase())
-      )
+    const plan = MEAL_PLANS.find(
+      (p) => p.target.toLowerCase() === goal.toLowerCase()
     );
+    return of(plan);
   }
 }

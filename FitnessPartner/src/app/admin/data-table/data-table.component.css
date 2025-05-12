@@ -1,0 +1,201 @@
+/* Variables */
+.data-table-container {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.loading-overlay .loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(63, 81, 181, 0.3);
+  border-radius: 50%;
+  border-top-color: #3f51b5;
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 10px;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Search Controls */
+.table-controls {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.table-controls .search-container {
+  width: 100%;
+  max-width: 300px;
+}
+.table-controls .search-container .search-input {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.table-controls .search-container .search-input:focus {
+  outline: none;
+  border-color: #3f51b5;
+  box-shadow: 0 0 0 2px rgba(63, 81, 181, 0.2);
+}
+
+/* Table Styles */
+.table-wrapper {
+  overflow-x: auto;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.data-table th, .data-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+.data-table th {
+  background-color: #f9f9f9;
+  font-weight: bold;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.data-table th.sortable {
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+.data-table th.sortable:hover {
+  background-color: #eaeaea;
+}
+.data-table tbody tr:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+.data-table .actions-column {
+  width: 100px;
+  text-align: center;
+}
+.data-table .actions-cell {
+  text-align: center;
+  white-space: nowrap;
+}
+.data-table .empty-row .empty-message {
+  text-align: center;
+  padding: 30px;
+  color: #666;
+}
+
+/* Sort Icons */
+.sort-icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+.sort-icon .arrow {
+  display: block;
+  height: 8px;
+  font-size: 10px;
+  line-height: 8px;
+  opacity: 0.3;
+}
+.sort-icon .arrow.active {
+  opacity: 1;
+  color: #3f51b5;
+}
+
+/* Pagination */
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+.pagination-container .pagination-controls {
+  display: flex;
+  align-items: center;
+}
+.pagination-container .pagination-controls .pagination-button {
+  min-width: 32px;
+  height: 32px;
+  margin: 0 3px;
+  border: 1px solid #e0e0e0;
+  background-color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pagination-container .pagination-controls .pagination-button:hover:not(:disabled) {
+  background-color: #f5f5f5;
+}
+.pagination-container .pagination-controls .pagination-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+.pagination-container .pagination-controls .pagination-button.active {
+  background-color: #3f51b5;
+  color: #fff;
+  border-color: #3f51b5;
+}
+.pagination-container .pagination-controls .pagination-ellipsis {
+  margin: 0 3px;
+}
+.pagination-container .page-size-selector {
+  display: flex;
+  align-items: center;
+}
+.pagination-container .page-size-selector label {
+  margin-right: 10px;
+  font-size: 14px;
+}
+.pagination-container .page-size-selector select {
+  padding: 5px 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+}
+.pagination-container .page-size-selector select:focus {
+  outline: none;
+  border-color: #3f51b5;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .pagination-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pagination-container .page-size-selector {
+    margin-top: 15px;
+  }
+}/*# sourceMappingURL=data-table.component.css.map */

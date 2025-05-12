@@ -1,139 +1,162 @@
 /* Text Overlay Styles */
-.inner-carsul-height{
-    height: 95vh
+.inner-carsul-height {
+  height: 95vh
 }
+
 .text-overlay {
-    width: 45vw;
-    height: 60vh;
-    padding: 2rem;
-    margin: 0 auto;
-    text-align: center;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  width: 45vw;
+  height: 60vh;
+  padding: 2rem;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .second-text-overlay {
-    width: 45vw;
-    height: 60vh;
-    left: 10%;
-    top: 10%;
-    color: white;
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 5px;
+  width: 45vw;
+  height: 60vh;
+  left: 10%;
+  top: 10%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
-.qute-style{
-    color: #f66c21;
-    font-weight: bolder;
+
+.qute-style {
+  color: #f66c21;
+  font-weight: bolder;
 }
+
 .firstqutefont {
-    font-size: 45px;
+  font-size: 45px;
 }
+
 .second-qute-font {
-    font-size: 60px;
+  font-size: 60px;
 }
 
 .third-qute-font1 {
-    font-size: 40px;
-    font-weight: bolder;
+  font-size: 40px;
+  font-weight: bolder;
 }
 
 .third-qute-font2 {
-    font-size: 60px;
-    }
+  font-size: 60px;
+}
 
 /* Media Queries */
 @media screen and (max-width: 1200px) {
-    .inner-carsul-height{
-        height: 90vh;
-    }
-    .text-overlay,
-    .second-text-overlay {
-        width: 60vw;
-        height: 45vh;
-    }
-    .firstqutefont {
-        font-size: 35px;
-    }
-    .second-qute-font {
-        font-size: 50px;
-    }
-    .third-qute-font1 {
-        font-size: 35px;
-    }
-    .third-qute-font2 {
-        font-size: 50px;
-    }
-    .button-design {
-        padding: 0.7rem 1.8rem;
-        font-size: 1.15rem;
-    }
+  .inner-carsul-height {
+    height: 90vh;
+  }
+
+  .text-overlay,
+  .second-text-overlay {
+    width: 60vw;
+    height: 45vh;
+  }
+
+  .firstqutefont {
+    font-size: 35px;
+  }
+
+  .second-qute-font {
+    font-size: 50px;
+  }
+
+  .third-qute-font1 {
+    font-size: 35px;
+  }
+
+  .third-qute-font2 {
+    font-size: 50px;
+  }
+
+  .button-design {
+    padding: 0.7rem 1.8rem;
+    font-size: 1.15rem;
+  }
 }
 
 @media screen and (max-width: 992px) {
-    .inner-carsul-height{
-        height: 70vh;
-    }
-    .text-overlay,
-    .second-text-overlay {
-        width: 70vw;
-        height: 43vh;
-        padding: 1.5rem;
-    }
-    .firstqutefont {
-        font-size: 30px;
-    }
-    .second-qute-font {
-        font-size: 40px;
-    }
-    .third-qute-font1 {
-        font-size: 30px;
-    }
-    .third-qute-font2 {
-        font-size: 45px;
-    }
-    .button-design {
-        padding: 0.65rem 1.6rem;
-        font-size: 1.1rem;
-        margin-top: 1.25rem;
-    }
+  .inner-carsul-height {
+    height: 70vh;
+  }
+
+  .text-overlay,
+  .second-text-overlay {
+    width: 70vw;
+    height: 43vh;
+    padding: 1.5rem;
+  }
+
+  .firstqutefont {
+    font-size: 30px;
+  }
+
+  .second-qute-font {
+    font-size: 40px;
+  }
+
+  .third-qute-font1 {
+    font-size: 30px;
+  }
+
+  .third-qute-font2 {
+    font-size: 45px;
+  }
+
+  .button-design {
+    padding: 0.65rem 1.6rem;
+    font-size: 1.1rem;
+    margin-top: 1.25rem;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .inner-carsul-height{
-        height: 50vh;
-    }
-    .text-overlay,
-    .second-text-overlay {
-        width: 80vw;
-        min-height: 30vh;
-        padding: 1rem;
-    }
-    .second-text-overlay {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    .firstqutefont {
-        font-size: 35px;
-    }
-    .second-qute-font {
-        font-size: 35px;
-    }
-    .third-qute-font1 {
-        font-size: 25px;
-    }
-    .third-qute-font2 {
-        font-size: 40px;
-    }
-    .button-design {
-        padding: 0.6rem 1.4rem;
-        font-size: 1rem;
-        margin-top: 1rem;
-    }
+  .inner-carsul-height {
+    height: 50vh;
+  }
+
+  .text-overlay,
+  .second-text-overlay {
+    width: 80vw;
+    min-height: 30vh;
+    padding: 1rem;
+  }
+
+  .second-text-overlay {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .firstqutefont {
+    font-size: 35px;
+  }
+
+  .second-qute-font {
+    font-size: 35px;
+  }
+
+  .third-qute-font1 {
+    font-size: 25px;
+  }
+
+  .third-qute-font2 {
+    font-size: 40px;
+  }
+
+  .button-design {
+    padding: 0.6rem 1.4rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -170,106 +193,134 @@
 }
 
 .button-design {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    background: linear-gradient(90deg, #cc0000 0%, #ff9933 100%);
-    border: none;
-    border-radius: 50px;
-    font-size: 1.25rem;
-    font-weight: bold;
-    color: #fff;
-    cursor: pointer;
-    transition: transform 0.2s ease;
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  background: linear-gradient(90deg, #cc0000 0%, #ff9933 100%);
+  border: none;
+  border-radius: 50px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .button-design:hover {
-    transform: translateY(-2px);
+  transform: translateY(-2px);
 }
 
 .trainer-section {
-	background: #f5f5f5;
-	padding-top: 90px;
-	padding-bottom: 190px;
+  background: #f5f5f5;
+  padding-top: 90px;
+  padding-bottom: 190px;
 }
+
 .trainer-section.about-trainer {
-	background: #ffffff;
+  background: #ffffff;
 }
+
 .single-trainer-item {
-	position: relative;
+  position: relative;
 }
+
 .single-trainer-item:hover .trainer-text {
-	height: 250px;
-	bottom: -90px;
-	padding: 26px 30px 30px;
-	-webkit-box-shadow: 0px 10px 49px 0px rgba(0, 0, 0, 0.15);
-	box-shadow: 0px 10px 49px 0px rgba(0, 0, 0, 0.15);
+  height: 250px;
+  bottom: -90px;
+  padding: 26px 30px 30px;
+  -webkit-box-shadow: 0px 10px 49px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 10px 49px 0px rgba(0, 0, 0, 0.15);
 }
+
 .single-trainer-item:hover .trainer-text p {
-	opacity: 1;
+  opacity: 1;
 }
+
 .single-trainer-item:hover .trainer-text .trainer-social {
-	opacity: 1;
-	visibility: visible;
+  opacity: 1;
+  visibility: visible;
 }
+
 .single-trainer-item img {
-	min-width: 100%;
+  min-width: 100%;
 }
+
 .single-trainer-item .trainer-text {
-	position: absolute;
-	left: 50%;
-	bottom: -55px;
-	text-align: center;
-	background: #ffffff;
-	width: 310px;
-	margin: 0 auto;
-	-webkit-transform: translateX(-155px);
-	-ms-transform: translateX(-155px);
-	transform: translateX(-155px);
-	-webkit-box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
-	box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
-	padding: 20px 30px 18px;
-	height: 90px;
-	-webkit-transition: all 0.5s;
-	-o-transition: all 0.5s;
-	transition: all 0.5s;
-	overflow: hidden;
+  position: absolute;
+  left: 50%;
+  bottom: -55px;
+  text-align: center;
+  background: #ffffff;
+  width: 310px;
+  margin: 0 auto;
+  -webkit-transform: translateX(-155px);
+  -ms-transform: translateX(-155px);
+  transform: translateX(-155px);
+  -webkit-box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 3px 4px 0px rgba(0, 0, 0, 0.15);
+  padding: 20px 30px 18px;
+  height: 90px;
+  -webkit-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
 }
+
 .single-trainer-item .trainer-text h5 {
-	font-size: 20px;
-	color: #111111;
-	font-weight: 600;
-	margin-bottom: 4px;
+  font-size: 20px;
+  color: #111111;
+  font-weight: 600;
+  margin-bottom: 4px;
 }
+
 .single-trainer-item .trainer-text span {
-	font-size: 16px;
-	color: #f15d44;
+  font-size: 16px;
+  color: #f15d44;
 }
+
 .single-trainer-item .trainer-text p {
-	margin-top: 7px;
-	opacity: 0;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
+  margin-top: 7px;
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
+
 .single-trainer-item .trainer-text .trainer-social {
-	opacity: 0;
-	visibility: hidden;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
+
 .single-trainer-item .trainer-text .trainer-social a {
-	display: inline-block;
-	font-size: 18px;
-	color: #111111;
-	margin-right: 5px;
-	-webkit-transition: all 0.3s;
-	-o-transition: all 0.3s;
-	transition: all 0.3s;
+  display: inline-block;
+  font-size: 18px;
+  color: #111111;
+  margin-right: 5px;
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
 }
+
 .single-trainer-item .trainer-text .trainer-social a:hover {
-	color: #f15d44;
+  color: #f15d44;
 }
+
 .single-trainer-item .trainer-text .trainer-social a:last-child {
-	margin-right: 0;
+  margin-right: 0;
+}
+
+.img-fixed {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.small-heading {
+  font-size: 2.5rem;
+}
+
+.small-paragraph {
+  font-size: 3.5rem;
 }

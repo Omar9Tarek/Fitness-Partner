@@ -3,8 +3,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UsersController } from './users.controller';
 import { UsersService } from './users.service';
 import { User, UserSchema } from './schemas/user.schema';
-import { MailModule } from 'src/auth/mail/mail.module';
-import { Product, ProductSchema } from 'src/products/schema/product.schema';
+import { MailModule } from '../auth/mail/mail.module';
+import { Product, ProductSchema } from '../products/schema/product.schema';
 
 @Module({
   imports: [

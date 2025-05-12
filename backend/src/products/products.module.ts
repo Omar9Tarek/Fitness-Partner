@@ -6,7 +6,16 @@ import { Product, ProductSchema } from './schema/product.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Product.name, schema: ProductSchema }]),
+    MongooseModule.forFeatureAsync([
+      {
+        name: Product.name,
+        useFactory: () => {
+          const schema = ProductSchema;
+          schema.set('suppressReservedKeysWarning', true);
+          return schema;
+        },
+      },
+    ]),
   ],
   controllers: [ProductsController],
   providers: [ProductsService],

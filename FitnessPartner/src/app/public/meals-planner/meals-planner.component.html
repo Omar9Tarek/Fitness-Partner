@@ -6,12 +6,8 @@
   <label for="goal" class="form-label fs-5">
     {{ "nutrition.mealsPlanner.label" | translate }}
   </label>
-  <select
-    id="goal"
-    class="form-select p-2 focus-ring focus-ring-warning border-warning border-2 fs-5"
-    [(ngModel)]="selectedGoal"
-    (change)="onGoalChange()"
-   >
+  <select id="goal" class="form-select p-2 focus-ring focus-ring-warning border-warning border-2 fs-5"
+    [(ngModel)]="selectedGoal" (change)="onGoalChange()" style="cursor: pointer;">
     <option value="" disabled selected>
       {{ "nutrition.mealsPlanner.option" | translate }}
     </option>
@@ -25,9 +21,7 @@
     </h2>
 
     <div class="table-responsive">
-      <table
-        class="table table-warning table-striped table-bordered align-middle"
-      >
+      <table class="table table-warning table-striped table-bordered align-middle">
         <thead>
           <tr class="text-center">
             <th scope="col">
@@ -54,19 +48,10 @@
           <tr *ngFor="let key of mealKeys">
             <td class="meal-type">{{ key | titlecase }}</td>
             <td class="items-cell">
-              <div
-                *ngFor="let item of plan.plan[key].items"
-                class="item-inline"
-              >
-                <img
-                  [src]="item.image"
-                  alt="{{ item.name }}"
-                  class="item-thumb"
-                />
+              <div *ngFor="let item of plan.plan[key].items" class="item-inline">
+                <img [src]="item.image" alt="{{ item.name }}" class="item-thumb" />
                 <span class="fw-semibold">{{ item.name }}</span> <br />
-                <small class="text-muted fst-italic"
-                  >({{ item.quantity }})</small
-                >
+                <small class="text-muted fst-italic">({{ item.quantity }})</small>
                 <br /><br />
               </div>
             </td>

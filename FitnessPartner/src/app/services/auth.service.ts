@@ -6,6 +6,9 @@ import { throwError } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthResponse } from '../interfaces/auth-response.interface';
 import { jwtDecode } from 'jwt-decode';
+import { environment } from '../../environments/environment';
+
+
 @Injectable({
   providedIn: 'root',
 })
@@ -14,7 +17,7 @@ export class AuthService {
     !!localStorage.getItem('access_token')
   );
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
-  private apiUrl = 'http://localhost:3000/auth';
+  private apiUrl = `${environment.apiUrl}/auth`; // || 'http://localhost:3000/auth';
 
   // Event emitter for cart synchronization
   private cartSyncRequired = new BehaviorSubject<boolean>(false);
@@ -94,9 +97,14 @@ export class AuthService {
     return this.isLoggedInSubject.value;
   }
 
+  isLoggedInOrNot(): boolean {
+    const token = localStorage.getItem('access_token'); // Check if token exists
+    return !!token; // Return true if token exists, false otherwise
+  }
+
   // Method to check if user is authenticated, can be used in route guards
   isAuthenticated(): boolean {
-    return !!this.getToken();
+    return !!localStorage.getItem('access_token');
   }
 
   // Update your Angular auth.service.ts

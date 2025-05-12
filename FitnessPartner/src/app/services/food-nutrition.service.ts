@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
+import { FOOD_DATA } from '../public/food-nutrition/food-data';
 
 export interface FoodItem {
   id: number;
@@ -11,25 +11,18 @@ export interface FoodItem {
   fat: number;
   carbs: number;
 }
+
 @Injectable({
   providedIn: 'root',
 })
 export class FoodNutritionService {
-  private dataUrl = 'http://localhost:3001/foods';
-
-  constructor(private http: HttpClient) {}
+  constructor() {}
 
   getAllFoods(): Observable<FoodItem[]> {
-    return this.http.get<FoodItem[]>(this.dataUrl);
+    return of(FOOD_DATA);
   }
 
   getFoodById(id: number): Observable<FoodItem | undefined> {
-    return new Observable((observer) => {
-      this.getAllFoods().subscribe((foods) => {
-        const food = foods.find((f) => f.id === id);
-        observer.next(food);
-        observer.complete();
-      });
-    });
+    return of(FOOD_DATA.find((food) => food.id === id));
   }
 }

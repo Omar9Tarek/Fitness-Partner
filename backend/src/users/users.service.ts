@@ -11,8 +11,8 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { v4 as uuidv4 } from 'uuid';
 import * as bcrypt from 'bcrypt';
-import { MailService } from 'src/auth/mail/mail.service';
-import { Product, ProductDocument } from 'src/products/schema/product.schema';
+import { MailService } from '../auth/mail/mail.service';
+import { Product, ProductDocument } from '../products/schema/product.schema';
 @Injectable()
 export class UsersService {
   constructor(
