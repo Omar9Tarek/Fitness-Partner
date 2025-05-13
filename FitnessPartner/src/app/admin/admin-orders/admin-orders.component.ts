@@ -40,14 +40,14 @@ interface Order {
   standalone: true
 })
 export class AdminOrdersComponent implements OnInit {
-  orders: Order[] = [];
+  orders: any[] = [];
   isLoading = true;
   selectedOrder: Order | null = null;
   editForm: FormGroup;
   isSaving = false;
   errorMessage = '';
   successMessage = '';
-  statusOptions = ['confirmed', 'shipped', 'delivered', 'cancelled'];
+  statusOptions = ['confirmed', 'shipped', 'delivered'];
   filteredOrders: Order[] = [];
   searchTerm = '';
   sortBy = 'date';
@@ -111,29 +111,42 @@ export class AdminOrdersComponent implements OnInit {
     });
   }
 
-  loadOrders(): void {
-    this.isLoading = true;
-    this.errorMessage = '';
-    
-    this.subscriptions.add(
-      this.usersService.getAllOrders().subscribe({
-        next: (data: Order[]) => {
+ loadOrders(): void {
+  this.isLoading = true;
+  this.errorMessage = '';
+  
+  this.subscriptions.add(
+    this.usersService.getAllOrders().subscribe({
+      next: (data: any) => {
+        // Ensure data is an array before sorting
+        if (Array.isArray(data)) {
           // Sort orders by date (newest first)
-          this.orders = data.sort((a, b) => 
+          this.orders = data.sort((a: Order, b: Order) => 
             new Date(b.date).getTime() - new Date(a.date).getTime()
           );
-          this.filteredOrders = [...this.orders];
-          this.isLoading = false;
-        },
-        error: (err) => {
-          console.error('Error loading orders:', err);
-          this.errorMessage = 'Failed to load orders. Please try again.';
-          this.isLoading = false;
+        } else if (data && typeof data === 'object') {
+          // If data is an object (like from Firebase), convert to array
+          this.orders = (Object.values(data) as Order[]).sort((a: Order, b: Order) => 
+            new Date(b.date).getTime() - new Date(a.date).getTime()
+          );
+        } else {
+          // Fallback if data is neither array nor object
+          this.orders = [];
+          this.errorMessage = 'Invalid data format received from server';
+          console.error('Invalid data format:', data);
         }
-      })
-    );
-  }
-
+        
+        this.filteredOrders = [...this.orders];
+        this.isLoading = false;
+      },
+      error: (err) => {
+        console.error('Error loading orders:', err);
+        this.errorMessage = 'Failed to load orders. Please try again.';
+        this.isLoading = false;
+      }
+    })
+  );
+}
   initializeForm(order: Order): void {
     this.productsArray.clear();
     

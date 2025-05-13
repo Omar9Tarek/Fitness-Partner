@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom, Observable, throwError } from 'rxjs';
-import { map, catchError } from 'rxjs/operators';
+import { firstValueFrom, Observable, throwError, BehaviorSubject, of } from 'rxjs';
+import { map, catchError, tap, shareReplay } from 'rxjs/operators';
 import { IProducts } from '../models/i-products';
 import { AuthService } from './auth.service';
 import { environment } from '../../environments/environment';
@@ -10,7 +10,16 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class ProductServicesService {
-  private productsUrl = `${environment.apiUrl}/products` //private productsUrl = 'http://localhost:3000/products';
+  private productsUrl = `${environment.apiUrl}/products`;
+  
+  // Cache for products
+  private productsCache = new Map<string, { data: IProducts[], timestamp: number }>();
+  private productDetailsCache = new Map<string, { data: IProducts, timestamp: number }>();
+  private cacheDuration = 5 * 60 * 1000; // 5 minutes in milliseconds
+  
+  // Products subject to notify subscribers when products change
+  private productsSubject = new BehaviorSubject<IProducts[]>([]);
+  public products$ = this.productsSubject.asObservable();
 
   constructor(private http: HttpClient, private authService: AuthService) { }
 
@@ -22,17 +31,54 @@ export class ProductServicesService {
     });
   }
 
-  getAllProducts(category?: string): Observable<IProducts[]> {
+  /**
+   * Get all products with optional caching
+   * @param category Optional category filter
+   * @param forceRefresh Force a refresh of the cache
+   */
+  getAllProducts(category?: string, forceRefresh = false): Observable<IProducts[]> {
+    const cacheKey = category ? `category:${category}` : 'all';
+    const cachedData = this.productsCache.get(cacheKey);
+    const now = Date.now();
+    
+    // Return cached data if available and not expired
+    if (!forceRefresh && cachedData && (now - cachedData.timestamp < this.cacheDuration)) {
+      this.productsSubject.next(cachedData.data);
+      return of(cachedData.data);
+    }
+    
+    // Otherwise, fetch from API
     let params = new HttpParams();
     if (category) {
       params = params.set('category', category);
     }
+    
     return this.http.get<IProducts[]>(this.productsUrl, { params }).pipe(
-      catchError(this.handleError)
+      tap(products => {
+        // Update cache
+        this.productsCache.set(cacheKey, { data: products, timestamp: now });
+        this.productsSubject.next(products);
+      }),
+      catchError(this.handleError),
+      shareReplay(1)
     );
   }
 
-  getProductById(id: string | number): Observable<IProducts> {
+  /**
+   * Get a product by ID with caching
+   * @param id Product ID
+   * @param forceRefresh Force a refresh of the cache
+   */
+  getProductById(id: string | number, forceRefresh = false): Observable<IProducts> {
+    const cacheKey = `product:${id}`;
+    const cachedData = this.productDetailsCache.get(cacheKey);
+    const now = Date.now();
+    
+    // Return cached data if available and not expired
+    if (!forceRefresh && cachedData && (now - cachedData.timestamp < this.cacheDuration)) {
+      return of(cachedData.data);
+    }
+    
     return this.http.get<IProducts>(`${this.productsUrl}/${id}`).pipe(
       map(product => {
         // Ensure product_images is properly parsed as an object
@@ -49,21 +95,37 @@ export class ProductServicesService {
         }
         return product;
       }),
-      catchError(this.handleError)
+      tap(product => {
+        // Update cache
+        this.productDetailsCache.set(cacheKey, { data: product, timestamp: now });
+      }),
+      catchError(this.handleError),
+      shareReplay(1)
     );
   }
 
-  getProductsByCategory(category: string): Observable<IProducts[]> {
-    const params = new HttpParams().set('category', category);
-    return this.http.get<IProducts[]>(this.productsUrl, { params }).pipe(
-      catchError(this.handleError)
-    );
+  /**
+   * Clear all product caches
+   */
+  clearCache(): void {
+    this.productsCache.clear();
+    this.productDetailsCache.clear();
   }
 
+  /**
+   * Get products by category (uses caching)
+   */
+  getProductsByCategory(category: string, forceRefresh = false): Observable<IProducts[]> {
+    return this.getAllProducts(category, forceRefresh);
+  }
+
+  /**
+   * Update product flavor quantity
+   */
   async updateFlavorQuantity(id: string, flavor: string, quantity: number): Promise<any> {
     try {
       // First validate that the product exists
-      const product = await firstValueFrom(this.getProductById(id));
+      const product = await firstValueFrom(this.getProductById(id, true)); // Force refresh for latest data
       
       // TypeScript safety: ensure available_flavors is an array
       if (!product.available_flavors || !Array.isArray(product.available_flavors)) {
@@ -98,6 +160,11 @@ export class ProductServicesService {
         flavor: exactFlavorName, // Use the exact flavor name from available_flavors
         quantity: quantity,
       }).pipe(
+        tap(() => {
+          // Invalidate cache for this product
+          const cacheKey = `product:${id}`;
+          this.productDetailsCache.delete(cacheKey);
+        }),
         catchError((error: HttpErrorResponse) => {
           console.error('Error updating flavor quantity:', error);
           return throwError(() => new Error(error.error?.message || 'Failed to update flavor quantity'));
@@ -111,6 +178,9 @@ export class ProductServicesService {
     }
   }
 
+  /**
+   * Admin methods with cache invalidation
+   */
   createProduct(product: IProducts): Observable<IProducts> {
     // Ensure product has proper structure before sending to server
     const preparedProduct = {
@@ -123,6 +193,7 @@ export class ProductServicesService {
     return this.http.post<IProducts>(`${this.productsUrl}/admin`, preparedProduct, { 
       headers: this.getAuthHeaders() 
     }).pipe(
+      tap(() => this.clearCache()), // Clear cache on product creation
       catchError(this.handleError)
     );
   }
@@ -131,15 +202,21 @@ export class ProductServicesService {
     return this.http.put<IProducts>(`${this.productsUrl}/admin/${id}`, product, { 
       headers: this.getAuthHeaders() 
     }).pipe(
+      tap(() => {
+        // Invalidate specific caches
+        const productKey = `product:${id}`;
+        this.productDetailsCache.delete(productKey);
+        this.clearCache(); // Also clear product list cache
+      }),
       catchError(this.handleError)
     );
   }
   
   deleteProduct(id: string | number): Observable<void> {
-    console.log('deleting product with id: ',id);
     return this.http.delete<void>(`${this.productsUrl}/${id}/admin`, { 
       headers: this.getAuthHeaders() 
     }).pipe(
+      tap(() => this.clearCache()), // Clear cache on product deletion
       catchError(this.handleError)
     );
   }
@@ -151,6 +228,11 @@ export class ProductServicesService {
     const response$ = this.http.patch<any>(url, body, { 
       headers: this.getAuthHeaders() 
     }).pipe(
+      tap(() => {
+        // Invalidate product cache
+        const cacheKey = `product:${productId}`;
+        this.productDetailsCache.delete(cacheKey);
+      }),
       catchError((error: HttpErrorResponse) => {
         console.error('Admin update error:', error);
         return throwError(() => new Error(error.error?.message || 'User not authorized'));
@@ -167,6 +249,11 @@ export class ProductServicesService {
     const response$ = this.http.delete<any>(url, {
       headers: this.getAuthHeaders()
     }).pipe(
+      tap(() => {
+        // Invalidate product cache
+        const cacheKey = `product:${productId}`;
+        this.productDetailsCache.delete(cacheKey);
+      }),
       catchError((error: HttpErrorResponse) => {
         console.error('Failed to delete flavor:', error);
         return throwError(() => new Error(error.error?.message || 'Failed to delete flavor'));
@@ -191,6 +278,11 @@ export class ProductServicesService {
     return this.http.post<any>(url, body, {
       headers: this.getAuthHeaders()
     }).pipe(
+      tap(() => {
+        // Invalidate product cache
+        const cacheKey = `product:${productId}`;
+        this.productDetailsCache.delete(cacheKey);
+      }),
       catchError((error: HttpErrorResponse) => {
         console.error('Failed to add flavor:', error);
         return throwError(() => new Error(error.error?.message || 'Failed to add flavor'));
