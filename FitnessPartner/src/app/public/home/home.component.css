@@ -13,7 +13,7 @@
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
@@ -127,7 +127,7 @@
   .text-overlay,
   .second-text-overlay {
     width: 80vw;
-    min-height: 30vh;
+    min-height: 40vh;
     padding: 1rem;
   }
 
@@ -165,11 +165,11 @@
     }
     .text-overlay{
         width: 80vw;
-        height: 50vh;
-        padding-top: 4rem;
+        height: 45vh;
+        padding-top: 4.1rem;
     }
     .second-text-overlay{
-        margin-top: -20px;
+        margin-top: -25px;
     }
     .firstqutefont {
         font-size: 25px;
