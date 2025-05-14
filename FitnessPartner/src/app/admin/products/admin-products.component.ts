@@ -289,10 +289,14 @@ export class AdminProductsComponent implements OnInit {
     this.router.navigate(['/products', id]);
   }
   
+  // getFlavors(product: IProducts): string[] {
+  //   const fq = product.flavor_quantity || {};
+  //   return Object.keys(fq).filter((flavor) => fq[flavor] > 0);
+  // }
+
   getFlavors(product: IProducts): string[] {
-    const fq = product.flavor_quantity || {};
-    return Object.keys(fq).filter((flavor) => fq[flavor] > 0);
-  }
+  return Object.keys(product.flavor_quantity || {});
+}
 
   editFlavor(productId: number, flavor: string) {
     const product = this.products.find((p) => p.id === productId);
