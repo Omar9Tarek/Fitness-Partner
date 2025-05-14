@@ -7,7 +7,7 @@ export class DietGeminiService {
   private model: GenerativeModel;
 
   constructor(private configService: ConfigService) {
-    const apiKey = this.configService.get<string>('AIzaSyARAtoJ-5WfAzwjPcfxCp4XiFuVeCVOJiU');
+    const apiKey = this.configService.get<string>('DIET_API');
     if (!apiKey) {
       throw new Error('❌ DIET_API key not found in .env');
     }
