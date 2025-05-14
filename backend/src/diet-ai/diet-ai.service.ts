@@ -7,13 +7,13 @@ export class DietGeminiService {
   private model: GenerativeModel;
 
   constructor(private configService: ConfigService) {
-    const apiKey = this.configService.get<string>('DIET_API');
+    const apiKey = this.configService.get<string>('AIzaSyARAtoJ-5WfAzwjPcfxCp4XiFuVeCVOJiU');
     if (!apiKey) {
       throw new Error('❌ DIET_API key not found in .env');
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    this.model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-001' });
+    this.model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
   }
 
   async generateDietPlan(data: {
