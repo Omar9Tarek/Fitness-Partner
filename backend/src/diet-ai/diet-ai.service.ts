@@ -13,7 +13,7 @@ export class DietGeminiService {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    this.model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro' });
+    this.model = genAI.getGenerativeModel({ model: 'gemini-1.5-pro-001' });
   }
 
   async generateDietPlan(data: {
