@@ -1,388 +1,642 @@
 <div class="container py-4">
-    <div class="card shadow mb-4">
-      <div class="card-body">
-        <!-- Header Section -->
-        <div class="d-flex justify-content-between align-items-center mb-4">
-          <h2 class="text-success fw-bold mb-0">Bro Split Program</h2>
-          <span class="badge bg-success rounded-pill px-3 py-2">5-6 days per week</span>
-        </div>
-        
-        <!-- Overview Section -->
-        <div class="mb-3">
-          <div 
-            class="d-flex justify-content-between align-items-center p-3 bg-light rounded shadow-sm cursor-pointer"
-            (click)="toggleSection('overview')"
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <!-- Header Section -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="text-success fw-bold mb-0">
+          {{ "trainers.bro.h2.1" | translate }}
+        </h2>
+        <span class="badge bg-success rounded-pill px-3 py-2">{{
+          "trainers.bro.span1" | translate
+        }}</span>
+      </div>
+
+      <!-- Overview Section -->
+      <div class="mb-3">
+        <div
+          class="d-flex justify-content-between align-items-center p-3 bg-light rounded shadow-sm cursor-pointer"
+          (click)="toggleSection('overview')"
+        >
+          <div class="d-flex align-items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-danger me-2"
+            >
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="16" x2="12" y2="12"></line>
+              <line x1="12" y1="8" x2="12.01" y2="8"></line>
+            </svg>
+            <h5 class="mb-0">{{ "trainers.bro.h5.1" | translate }}</h5>
+          </div>
+          <svg
+            *ngIf="expandedSection === 'overview'"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            <div class="d-flex align-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-danger me-2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="12" y1="16" x2="12" y2="12"></line>
-                <line x1="12" y1="8" x2="12.01" y2="8"></line>
-              </svg>
-              <h5 class="mb-0">Program Overview</h5>
-            </div>
-            <svg *ngIf="expandedSection === 'overview'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-            <svg *ngIf="expandedSection !== 'overview'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-          
-          <div *ngIf="expandedSection === 'overview'" class="card card-body border-top-0 rounded-top-0 animate-fade">
-            <p class="mb-3 text-secondary">
-              The Bro Split is a bodybuilding classic that focuses on training individual muscle groups 
-              on separate days. This approach provides:
-            </p>
-            <ul class="mb-3 ps-4">
-              <li>High volume training for each muscle group</li>
-              <li>7 days between training the same muscles</li>
-              <li>Focus on isolation exercises</li>
-              <li>Ideal for advanced lifters</li>
-            </ul>
-            <p class="text-secondary mb-0">
-              Best suited for experienced lifters who can handle high training volumes and want 
-              maximum focus on individual muscle groups.
-            </p>
-          </div>
-        </div>
-        
-        <!-- Schedule Section -->
-        <div class="mb-3">
-          <div 
-            class="d-flex justify-content-between align-items-center p-3 bg-light rounded shadow-sm cursor-pointer"
-            (click)="toggleSection('schedule')"
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+          <svg
+            *ngIf="expandedSection !== 'overview'"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
           >
-            <div class="d-flex align-items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-danger me-2">
-                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-                <line x1="16" y1="2" x2="16" y2="6"></line>
-                <line x1="8" y1="2" x2="8" y2="6"></line>
-                <line x1="3" y1="10" x2="21" y2="10"></line>
-              </svg>
-              <h5 class="mb-0">Weekly Schedule</h5>
-            </div>
-            <svg *ngIf="expandedSection === 'schedule'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="18 15 12 9 6 15"></polyline>
-            </svg>
-            <svg *ngIf="expandedSection !== 'schedule'" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="6 9 12 15 18 9"></polyline>
-            </svg>
-          </div>
-          
-          <div *ngIf="expandedSection === 'schedule'" class="card card-body border-top-0 rounded-top-0 animate-fade">
-            <div class="row text-center mb-3 g-2">
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Mon</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Tue</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Wed</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Thu</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Fri</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Sat</div>
-              </div>
-              <div class="col">
-                <div class="bg-danger text-white p-2 rounded">Sun</div>
-              </div>
-            </div>
-            
-            <div class="row text-center mb-3 g-2">
-              <div class="col">
-                <div class="bg-danger bg-opacity-25 p-2 rounded">Chest</div>
-              </div>
-              <div class="col">
-                <div class="bg-warning bg-opacity-25 p-2 rounded">Back</div>
-              </div>
-              <div class="col">
-                <div class="bg-info bg-opacity-25 p-2 rounded">Shoulders</div>
-              </div>
-              <div class="col">
-                <div class="bg-secondary bg-opacity-25 p-2 rounded">Rest</div>
-              </div>
-              <div class="col">
-                <div class="bg-success bg-opacity-25 p-2 rounded">Arms</div>
-              </div>
-              <div class="col">
-                <div class="bg-primary bg-opacity-25 p-2 rounded">Legs</div>
-              </div>
-              <div class="col">
-                <div class="bg-secondary bg-opacity-25 p-2 rounded">Rest</div>
-              </div>
-            </div>
-            
-            <div class="text-muted small">
-              <p class="mb-2">
-                <strong>Note:</strong> This split allows maximum focus on each muscle group. 
-                Maintain at least 6 days between training the same muscle group.
-              </p>
-              <p class="mb-0">
-                Optional: Add cardio or abs on rest days if desired.
-              </p>
-            </div>
-          </div>
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
         </div>
-  
-        <!-- Workouts Preview -->
-        <div class="row mt-4 g-3">
-          <!-- Chest Day -->
-          <div class="col-md-4">
-            <div class="card bg-danger bg-opacity-10 h-100">
-              <div class="card-body">
-                <h5 class="card-title text-danger fw-bold mb-3">Chest Day</h5>
-                <ul class="list-unstyled">
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-danger rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Flat Bench Press
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-danger rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Incline Dumbbell Press
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-danger rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Chest Dips
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-danger rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Cable Flyes
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <span class="bg-danger rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Push-Ups (Burnout)
-                  </li>
-                </ul>
-                <div class="mt-3">
-                  <span class="badge bg-danger rounded-pill me-2">5 exercises</span>
-                  <span class="badge bg-danger rounded-pill">60-75 minutes</span>
-                </div>
+
+        <div
+          *ngIf="expandedSection === 'overview'"
+          class="card card-body border-top-0 rounded-top-0 animate-fade"
+        >
+          <p class="mb-3 text-secondary">
+            {{ "trainers.bro.p1" | translate }}
+          </p>
+          <ul class="mb-3 ps-4">
+            <li>{{ "trainers.bro.li1" | translate }}</li>
+            <li>{{ "trainers.bro.li2" | translate }}</li>
+            <li>{{ "trainers.bro.li3" | translate }}</li>
+            <li>{{ "trainers.bro.li4" | translate }}</li>
+          </ul>
+          <p class="text-secondary mb-0">
+            {{ "trainers.bro.p2" | translate }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Schedule Section -->
+      <div class="mb-3">
+        <div
+          class="d-flex justify-content-between align-items-center p-3 bg-light rounded shadow-sm cursor-pointer"
+          (click)="toggleSection('schedule')"
+        >
+          <div class="d-flex align-items-center">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="text-danger me-2"
+            >
+              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+              <line x1="16" y1="2" x2="16" y2="6"></line>
+              <line x1="8" y1="2" x2="8" y2="6"></line>
+              <line x1="3" y1="10" x2="21" y2="10"></line>
+            </svg>
+            <h5 class="mb-0">{{ "trainers.bro.h5.2" | translate }}</h5>
+          </div>
+          <svg
+            *ngIf="expandedSection === 'schedule'"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+          <svg
+            *ngIf="expandedSection !== 'schedule'"
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </div>
+
+        <div
+          *ngIf="expandedSection === 'schedule'"
+          class="card card-body border-top-0 rounded-top-0 animate-fade"
+        >
+          <div class="row text-center mb-3 g-2">
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Mon" | translate }}
               </div>
             </div>
-          </div>
-  
-          <!-- Back Day -->
-          <div class="col-md-4">
-            <div class="card bg-warning bg-opacity-10 h-100">
-              <div class="card-body">
-                <h5 class="card-title text-warning fw-bold mb-3">Back Day</h5>
-                <ul class="list-unstyled">
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-warning rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Deadlifts
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-warning rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Pull-Ups
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-warning rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Bent-Over Rows
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-warning rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Lat Pulldowns
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <span class="bg-warning rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Hyperextensions
-                  </li>
-                </ul>
-                <div class="mt-3">
-                  <span class="badge bg-warning rounded-pill me-2">5 exercises</span>
-                  <span class="badge bg-warning rounded-pill">60-75 minutes</span>
-                </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Tue" | translate }}
               </div>
             </div>
-          </div>
-  
-          <!-- Shoulders & Arms Days -->
-          <div class="col-md-4">
-            <div class="card bg-info bg-opacity-10 h-100">
-              <div class="card-body">
-                <h5 class="card-title text-info fw-bold mb-3">Shoulders Day</h5>
-                <ul class="list-unstyled">
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-info rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Overhead Press
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-info rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Lateral Raises
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-info rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Front Raises
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-info rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Rear Delt Flyes
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <span class="bg-info rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Shrugs
-                  </li>
-                </ul>
-                <div class="mt-3">
-                  <span class="badge bg-info rounded-pill me-2">5 exercises</span>
-                  <span class="badge bg-info rounded-pill">60 minutes</span>
-                </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Wed" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Thu" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Fri" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Sat" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-danger text-white p-2 rounded">
+                {{ "trainers.bro.Sun" | translate }}
               </div>
             </div>
           </div>
 
-          <div class="col-md-4">
-            <div class="card bg-primary bg-opacity-10 h-100">
-              <div class="card-body">
-                <h5 class="card-title text-primary fw-bold mb-3">Arms Day</h5>
-                <ul class="list-unstyled">
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-primary rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Barbell Curls
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-primary rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Skull Crushers
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-primary rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Hammer Curls
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-primary rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Tricep Pushdowns
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <span class="bg-primary rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Preacher Curls
+          <div class="row text-center mb-3 g-2">
+            <div class="col">
+              <div class="bg-danger bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise1" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-warning bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise2" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-info bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise3" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-secondary bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise4" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-success bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise5" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-primary bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise6" | translate }}
+              </div>
+            </div>
+            <div class="col">
+              <div class="bg-secondary bg-opacity-25 p-2 rounded">
+                {{ "trainers.bro.exercise7" | translate }}
+              </div>
+            </div>
+          </div>
+
+          <div class="text-muted small">
+            <p class="mb-2">
+              <strong> {{ "trainers.bro.strong1" | translate }} </strong>
+              {{ "trainers.bro.p3" | translate }}
+            </p>
+            <p class="mb-0">
+              {{ "trainers.bro.p4" | translate }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workouts Preview -->
+      <div class="row mt-4 g-3">
+        <!-- Chest Day -->
+        <div class="col-md-4">
+          <div class="card bg-danger bg-opacity-10 h-100">
+            <div class="card-body">
+              <h5 class="card-title text-danger fw-bold mb-3">
+                {{ "trainers.bro.h5.3" | translate }}
+              </h5>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-danger rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li5" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-danger rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li6" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-danger rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li7" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-danger rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li8" | translate }}
+                </li>
+                <li class="d-flex align-items-center">
+                  <span
+                    class="bg-danger rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li9" | translate }}
+                </li>
+              </ul>
+              <div class="mt-3">
+                <span class="badge bg-danger rounded-pill me-2">
+                  {{ "trainers.bro.li10" | translate }}
+                </span>
+                <span class="badge bg-danger rounded-pill">
+                  {{ "trainers.bro.li11" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back Day -->
+        <div class="col-md-4">
+          <div class="card bg-warning bg-opacity-10 h-100">
+            <div class="card-body">
+              <h5 class="card-title text-warning fw-bold mb-3">
+                {{ "trainers.bro.h5.4" | translate }}
+              </h5>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-warning rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li12" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-warning rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li13" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-warning rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li14" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-warning rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li15" | translate }}
+                </li>
+                <li class="d-flex align-items-center">
+                  <span
+                    class="bg-warning rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li16" | translate }}
+                </li>
+              </ul>
+              <div class="mt-3">
+                <span class="badge bg-warning rounded-pill me-2">
+                  {{ "trainers.bro.li17" | translate }}
+                </span>
+                <span class="badge bg-warning rounded-pill">
+                  {{ "trainers.bro.li18" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shoulders & Arms Days -->
+        <div class="col-md-4">
+          <div class="card bg-info bg-opacity-10 h-100">
+            <div class="card-body">
+              <h5 class="card-title text-info fw-bold mb-3">
+                {{ "trainers.bro.h5.5" | translate }}
+              </h5>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-info rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li19" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-info rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li20" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-info rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li21" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-info rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li22" | translate }}
+                </li>
+                <li class="d-flex align-items-center">
+                  <span
+                    class="bg-info rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li23" | translate }}
+                </li>
+              </ul>
+              <div class="mt-3">
+                <span class="badge bg-info rounded-pill me-2">
+                  {{ "trainers.bro.span2" | translate }}</span
+                >
+                <span class="badge bg-info rounded-pill">
+                  {{ "trainers.bro.span3" | translate }}</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card bg-primary bg-opacity-10 h-100">
+            <div class="card-body">
+              <h5 class="card-title text-primary fw-bold mb-3">
+                {{ "trainers.bro.h5.6" | translate }}
+              </h5>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-primary rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li24" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-primary rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li25" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-primary rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li26" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-primary rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li27" | translate }}
+                </li>
+                <li class="d-flex align-items-center">
+                  <span
+                    class="bg-primary rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li28" | translate }}
+                </li>
+              </ul>
+              <div class="mt-3">
+                <span class="badge bg-primary rounded-pill me-2">
+                  {{ "trainers.bro.span4" | translate }}
+                </span>
+                <span class="badge bg-primary rounded-pill">
+                  {{ "trainers.bro.span5" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 mt-3">
+          <div class="card bg-success bg-opacity-10 h-100">
+            <div class="card-body">
+              <h5 class="card-title text-success fw-bold mb-3">
+                {{ "trainers.bro.h5.7" | translate }}
+              </h5>
+              <ul class="list-unstyled">
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-success rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li29" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-success rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li30" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-success rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li31" | translate }}
+                </li>
+                <li class="d-flex align-items-center mb-2">
+                  <span
+                    class="bg-success rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li32" | translate }}
+                </li>
+                <li class="d-flex align-items-center">
+                  <span
+                    class="bg-success rounded-circle me-2"
+                    style="width: 6px; height: 6px"
+                  ></span>
+                  {{ "trainers.bro.li33" | translate }}
+                </li>
+              </ul>
+              <div class="mt-3">
+                <span class="badge bg-success rounded-pill me-2">
+                  {{ "trainers.bro.span6" | translate }}
+                </span>
+                <span class="badge bg-success rounded-pill">
+                  {{ "trainers.bro.span7" | translate }}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Workout Details Section -->
+      <div class="row mt-4">
+        <div class="col-12">
+          <h3 class="text-danger mb-4">
+            {{ "trainers.bro.h3.1" | translate }}
+          </h3>
+
+          <div
+            *ngIf="filteredWorkouts.length === 0"
+            class="col-12 text-center my-5"
+          >
+            <p>{{ "trainers.bro.p5" | translate }}</p>
+          </div>
+
+          <div *ngFor="let workout of filteredWorkouts" class="col-md-12 mb-4">
+            <div class="card">
+              <div
+                class="card-header"
+                [ngClass]="{
+                  'bg-danger text-white': workout.day === 'chest',
+                  'bg-warning text-white': workout.day === 'back',
+                  'bg-info text-white': workout.day === 'shoulders',
+                  'bg-primary text-white': workout.day === 'arms',
+                  'bg-success text-white': workout.day === 'legs'
+                }"
+                style="cursor: pointer"
+                (click)="toggleWorkout(workout.day)"
+              >
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <h5 class="mb-0">{{ workout.day | titlecase }} Day</h5>
+                    <span class="badge bg-light text-dark ms-2">{{
+                      workout.muscleGroup
+                    }}</span>
+                  </div>
+                  <i
+                    class="bi"
+                    [ngClass]="
+                      isWorkoutExpanded(workout.day)
+                        ? 'bi-chevron-up'
+                        : 'bi-chevron-down'
+                    "
+                  ></i>
+                </div>
+              </div>
+
+              <div *ngIf="isWorkoutExpanded(workout.day)" class="card-body">
+                <h6>Exercises:</h6>
+                <ul class="list-group">
+                  <li
+                    *ngFor="let exercise of workout.exercises"
+                    class="list-group-item"
+                  >
+                    <strong
+                      class="clickable"
+                      (click)="
+                        navigateToExercises(
+                          workout.day,
+                          exercise.name.toLowerCase()
+                        )
+                      "
+                    >
+                      {{ exercise.name }}
+                    </strong>
+                    <div>
+                      {{ exercise.sets }}
+                      {{ "trainers.bro.sets" | translate }} ×
+                      {{ exercise.reps }} {{ "trainers.bro.reps" | translate }}
+                    </div>
+                    <small *ngIf="exercise.notes" class="text-muted">{{
+                      exercise.notes
+                    }}</small>
                   </li>
                 </ul>
-                <div class="mt-3">
-                  <span class="badge bg-primary rounded-pill me-2">5 exercises</span>
-                  <span class="badge bg-primary rounded-pill">60 minutes</span>
+
+                <div class="d-flex justify-content-between mt-3">
+                  <span
+                    class="badge text-light"
+                    [ngClass]="{
+                      'bg-danger bg-opacity-25 text-danger':
+                        workout.day === 'chest',
+                      'bg-warning bg-opacity-25 text-warning':
+                        workout.day === 'back',
+                      'bg-info bg-opacity-25 text-info':
+                        workout.day === 'shoulders',
+                      'bg-primary bg-opacity-25 text-primary':
+                        workout.day === 'arms',
+                      'bg-success bg-opacity-25 text-success':
+                        workout.day === 'legs'
+                    }"
+                  >
+                    Duration:
+                    {{ workout.day === "legs" ? "60-75" : "45-60" }} minutes
+                  </span>
+                  <span
+                    class="badge text-light"
+                    [ngClass]="{
+                      'bg-danger bg-opacity-25 text-danger':
+                        workout.day === 'chest',
+                      'bg-warning bg-opacity-25 text-warning':
+                        workout.day === 'back',
+                      'bg-info bg-opacity-25 text-info':
+                        workout.day === 'shoulders',
+                      'bg-primary bg-opacity-25 text-primary':
+                        workout.day === 'arms',
+                      'bg-success bg-opacity-25 text-success':
+                        workout.day === 'legs'
+                    }"
+                  >
+                    {{ workout.exercises.length }} exercises
+                  </span>
                 </div>
               </div>
             </div>
           </div>
-  
-  
-          <div class="col-md-4 mt-3">
-            <div class="card bg-success bg-opacity-10 h-100">
-              <div class="card-body">
-                <h5 class="card-title text-success fw-bold mb-3">Legs Day</h5>
-                <ul class="list-unstyled">
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-success rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Squats
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-success rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Leg Press
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-success rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Romanian Deadlifts
-                  </li>
-                  <li class="d-flex align-items-center mb-2">
-                    <span class="bg-success rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Leg Extensions
-                  </li>
-                  <li class="d-flex align-items-center">
-                    <span class="bg-success rounded-circle me-2" style="width: 6px; height: 6px;"></span>
-                    Calf Raises
-                  </li>
-                </ul>
-                <div class="mt-3">
-                  <span class="badge bg-success rounded-pill me-2">5 exercises</span>
-                  <span class="badge bg-success rounded-pill">75 minutes</span>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-        
-        <!-- Workout Details Section -->
-<div class="row mt-4">
-  <div class="col-12">
-    <h3 class="text-danger mb-4">Workout Details</h3>
-    
-    <div *ngIf="filteredWorkouts.length === 0" class="col-12 text-center my-5">
-      <p>No workouts found. Please select a different plan</p>
-    </div>
-    
-    <div *ngFor="let workout of filteredWorkouts" class="col-md-12 mb-4">
-      <div class="card">
-        <div class="card-header" 
-             [ngClass]="{
-                'bg-danger text-white': workout.day === 'chest',
-                'bg-warning text-white': workout.day === 'back',
-                'bg-info text-white': workout.day === 'shoulders',
-                'bg-primary text-white': workout.day === 'arms',
-                'bg-success text-white': workout.day === 'legs'
-              }"
-             style="cursor: pointer;"
-             (click)="toggleWorkout(workout.day)">
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="d-flex align-items-center">
-              <h5 class="mb-0">{{workout.day | titlecase}} Day</h5>
-              <span class="badge bg-light text-dark ms-2">{{workout.muscleGroup}}</span>
-            </div>
-            <i class="bi" [ngClass]="isWorkoutExpanded(workout.day) ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
-          </div>
-        </div>
-        
-        <div *ngIf="isWorkoutExpanded(workout.day)" class="card-body">
-          <h6>Exercises:</h6>
-          <ul class="list-group">
-            <li *ngFor="let exercise of workout.exercises" class="list-group-item">
-              <strong class="clickable" (click)="navigateToExercises(workout.day , exercise.name.toLowerCase())">
-                {{exercise.name}}
-              </strong>
-              <div>{{exercise.sets}} sets × {{exercise.reps}} reps</div>
-              <small *ngIf="exercise.notes" class="text-muted">{{exercise.notes}}</small>
-            </li>
-          </ul>
-          
-          <div class="d-flex justify-content-between mt-3">
-            <span class="badge text-light" 
-                  [ngClass]="{
-                    'bg-danger bg-opacity-25 text-danger': workout.day === 'chest',
-                    'bg-warning bg-opacity-25 text-warning': workout.day === 'back',
-                    'bg-info bg-opacity-25 text-info': workout.day === 'shoulders',
-                    'bg-primary bg-opacity-25 text-primary': workout.day === 'arms',
-                    'bg-success bg-opacity-25 text-success': workout.day === 'legs'
-                  }">
-              Duration: {{workout.day === 'legs' ? '60-75' : '45-60'}} minutes
-            </span>
-            <span class="badge text-light"
-                  [ngClass]="{
-                    'bg-danger bg-opacity-25 text-danger': workout.day === 'chest',
-                    'bg-warning bg-opacity-25 text-warning': workout.day === 'back',
-                    'bg-info bg-opacity-25 text-info': workout.day === 'shoulders',
-                    'bg-primary bg-opacity-25 text-primary': workout.day === 'arms',
-                    'bg-success bg-opacity-25 text-success': workout.day === 'legs'
-                  }">
-              {{workout.exercises.length}} exercises
-            </span>
-          </div>
-        </div>
+      </div>
+
+      <div class="mt-4 pt-3 border-top text-center">
+        <p class="text-muted small">
+          {{ "trainers.bro.p6" | translate }}
+        </p>
       </div>
     </div>
   </div>
 </div>
-
-        <div class="mt-4 pt-3 border-top text-center">
-          <p class="text-muted small">
-            Note: This program emphasizes muscle isolation. Adjust weights and rest periods based on your recovery capacity.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>

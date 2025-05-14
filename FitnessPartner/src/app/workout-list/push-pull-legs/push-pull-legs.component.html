@@ -1,327 +1,497 @@
 <div class="container py-4">
-    <div class="card shadow mb-4">
-      <div class="card-body">
-        <!-- Header Section -->
-        <div class="d-flex align-items-center justify-content-between mb-4">
-          <h2 class="fw-bold text-danger">Push/Pull/Legs Split Program</h2>
-          <div class="badge rounded-pill bg-danger px-3 py-2">
-            6 days per week
-          </div>
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <!-- Header Section -->
+      <div class="d-flex align-items-center justify-content-between mb-4">
+        <h2 class="fw-bold text-danger">
+          {{ "trainers.pushpull.h2" | translate }}
+        </h2>
+        <div class="badge rounded-pill bg-danger px-3 py-2">
+          {{ "trainers.pushpull.div1" | translate }}
         </div>
-        
+      </div>
+
       <!-- Overview Section -->
       <div class="mb-3">
-        <div 
+        <div
           class="d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm cursor-pointer"
           (click)="toggleSection('overview')"
-          style="cursor: pointer;"
+          style="cursor: pointer"
         >
           <div class="d-flex align-items-center">
             <i class="bi bi-info-circle text-primary me-2"></i>
-            <h3 class="fs-5 fw-semibold mb-0">Program Overview</h3>
+            <h3 class="fs-5 fw-semibold mb-0">
+              {{ "trainers.pushpull.h3.1" | translate }}
+            </h3>
           </div>
-          <i class="bi" [ngClass]="isExpanded('overview') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          <i
+            class="bi"
+            [ngClass]="
+              isExpanded('overview') ? 'bi-chevron-up' : 'bi-chevron-down'
+            "
+          ></i>
         </div>
-        
-        <div *ngIf="isExpanded('overview')" class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top">
+
+        <div
+          *ngIf="isExpanded('overview')"
+          class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top"
+        >
           <p class="mb-3 text-muted">
-            The Push/Pull/Legs split is a popular training method that organizes workouts by movement patterns:
+            {{ "trainers.pushpull.p1" | translate }}
           </p>
           <ul class="list-group-flush ps-3 mb-3">
             <li class="mb-2">
-              <strong>Push:</strong> All pushing movements that train the chest, shoulders, and triceps
+              <strong> {{ "trainers.pushpull.strong1" | translate }} </strong>
+              {{ "trainers.pushpull.li1" | translate }}
             </li>
             <li class="mb-2">
-              <strong>Pull:</strong> All pulling movements that train the back, rear delts, and biceps
+              <strong>{{ "trainers.pushpull.strong2" | translate }} </strong>
+              {{ "trainers.pushpull.li2" | translate }}
             </li>
             <li class="mb-2">
-              <strong>Legs:</strong> Lower body exercises for quads, hamstrings, glutes, calves, and core
+              <strong>{{ "trainers.pushpull.strong3" | translate }}</strong>
+              {{ "trainers.pushpull.li3" | translate }}
             </li>
           </ul>
           <p class="text-muted">
-            This program is ideal for intermediate to advanced lifters who can commit to training 5-6 days per week,
-            allowing for maximum muscle isolation and recovery between sessions.
+            {{ "trainers.pushpull.p2" | translate }}
           </p>
         </div>
       </div>
-      
+
       <!-- Schedule Section -->
       <div class="mb-3">
-        <div 
+        <div
           class="d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm"
           (click)="toggleSection('schedule')"
-          style="cursor: pointer;"
+          style="cursor: pointer"
         >
           <div class="d-flex align-items-center">
             <i class="bi bi-calendar text-primary me-2"></i>
-            <h3 class="fs-5 fw-semibold mb-0">Weekly Schedule</h3>
+            <h3 class="fs-5 fw-semibold mb-0">
+              {{ "trainers.pushpull.h3.2" | translate }}
+            </h3>
           </div>
-          <i class="bi" [ngClass]="isExpanded('schedule') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          <i
+            class="bi"
+            [ngClass]="
+              isExpanded('schedule') ? 'bi-chevron-up' : 'bi-chevron-down'
+            "
+          ></i>
         </div>
-        
-        <div *ngIf="isExpanded('schedule')" class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top">
+
+        <div
+          *ngIf="isExpanded('schedule')"
+          class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top"
+        >
           <div class="row text-center mb-4">
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Mon</div>
-              <div class="bg-danger bg-opacity-25 p-2 rounded mt-2">Push</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Mon" | translate }}
+              </div>
+              <div class="bg-danger bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise1" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Tue</div>
-              <div class="bg-success bg-opacity-25 p-2 rounded mt-2">Pull</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Tue" | translate }}
+              </div>
+              <div class="bg-success bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise2" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Wed</div>
-              <div class="bg-warning bg-opacity-25 p-2 rounded mt-2">Legs</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Wed" | translate }}
+              </div>
+              <div class="bg-warning bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise1" | translate }}
+                {{ "trainers.pushpull.exercise3" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Thu</div>
-              <div class="bg-danger bg-opacity-25 p-2 rounded mt-2">Push</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Thu" | translate }}
+              </div>
+              <div class="bg-danger bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise4" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Fri</div>
-              <div class="bg-success bg-opacity-25 p-2 rounded mt-2">Pull</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Fri" | translate }}
+              </div>
+              <div class="bg-success bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise5" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Sat</div>
-              <div class="bg-warning bg-opacity-25 p-2 rounded mt-2">Legs</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Sat" | translate }}
+              </div>
+              <div class="bg-warning bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise6" | translate }}
+              </div>
             </div>
             <div class="col">
-              <div class="bg-primary text-white p-2 rounded fw-medium">Sun</div>
-              <div class="bg-secondary bg-opacity-25 p-2 rounded mt-2">Rest</div>
+              <div class="bg-primary text-white p-2 rounded fw-medium">
+                {{ "trainers.pushpull.Sun" | translate }}
+              </div>
+              <div class="bg-secondary bg-opacity-25 p-2 rounded mt-2">
+                {{ "trainers.pushpull.exercise7" | translate }}
+              </div>
             </div>
           </div>
-          
+
           <div class="text-muted small">
             <p class="mb-2">
-              <strong>Note:</strong> This is the standard 6-day PPL split. For a 5-day version, you can remove one day 
-              and adjust based on your schedule and recovery needs.
+              <strong> {{ "trainers.pushpull.strong4" | translate }} </strong>
+              {{ "trainers.pushpull.p3" | translate }}
             </p>
             <p>
-              For optimal results, maintain this sequence even if you need to shift the specific days of the week.
+              {{ "trainers.pushpull.p4" | translate }}
             </p>
           </div>
         </div>
       </div>
-    
+
       <!-- Target Muscles Section -->
       <div class="mb-3">
-        <div 
+        <div
           class="d-flex align-items-center justify-content-between bg-white p-3 rounded shadow-sm"
           (click)="toggleSection('muscles')"
-          style="cursor: pointer;"
+          style="cursor: pointer"
         >
           <div class="d-flex align-items-center">
             <i class="bi bi-people text-primary me-2"></i>
-            <h3 class="fs-5 fw-semibold mb-0">Target Muscles</h3>
+            <h3 class="fs-5 fw-semibold mb-0">
+              {{ "trainers.pushpull.h3.3" | translate }}
+            </h3>
           </div>
-          <i class="bi" [ngClass]="isExpanded('muscles') ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+          <i
+            class="bi"
+            [ngClass]="
+              isExpanded('muscles') ? 'bi-chevron-up' : 'bi-chevron-down'
+            "
+          ></i>
         </div>
-        
-        <div *ngIf="isExpanded('muscles')" class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top">
+
+        <div
+          *ngIf="isExpanded('muscles')"
+          class="bg-white p-3 rounded-bottom shadow-sm mt-1 border-top"
+        >
           <div class="row">
             <div class="col-md-4 mb-3">
               <div class="border rounded p-3">
-                <h4 class="fw-semibold text-danger mb-2">Push Day</h4>
+                <h4 class="fw-semibold text-danger mb-2">
+                  {{ "trainers.pushpull.h4.1" | translate }}
+                </h4>
                 <ul class="list-unstyled ps-3">
-                  <li><i class="bi bi-dot text-danger"></i> Chest (pectoralis major & minor)</li>
-                  <li><i class="bi bi-dot text-danger"></i> Shoulders (anterior & lateral deltoids)</li>
-                  <li><i class="bi bi-dot text-danger"></i> Triceps (all three heads)</li>
+                  <li>
+                    <i class="bi bi-dot text-danger"></i>
+                    {{ "trainers.pushpull.li4" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-danger"></i>
+                    {{ "trainers.pushpull.li5" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-danger"></i>
+                    {{ "trainers.pushpull.li6" | translate }}
+                  </li>
                 </ul>
               </div>
             </div>
-            
+
             <div class="col-md-4 mb-3">
               <div class="border rounded p-3">
-                <h4 class="fw-semibold text-success mb-2">Pull Day</h4>
+                <h4 class="fw-semibold text-success mb-2">
+                  {{ "trainers.pushpull.h4.2" | translate }}
+                </h4>
                 <ul class="list-unstyled ps-3">
-                  <li><i class="bi bi-dot text-success"></i> Back (lats, rhomboids, traps)</li>
-                  <li><i class="bi bi-dot text-success"></i> Rear Deltoids</li>
-                  <li><i class="bi bi-dot text-success"></i> Biceps & Forearms</li>
+                  <li>
+                    <i class="bi bi-dot text-success"></i>
+                    {{ "trainers.pushpull.li7" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-success"></i>
+                    {{ "trainers.pushpull.li8" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-success"></i>
+                    {{ "trainers.pushpull.li9" | translate }}
+                  </li>
                 </ul>
               </div>
             </div>
-            
+
             <div class="col-md-4 mb-3">
               <div class="border rounded p-3">
-                <h4 class="fw-semibold text-warning mb-2">Legs Day</h4>
+                <h4 class="fw-semibold text-warning mb-2">
+                  {{ "trainers.pushpull.h4.3" | translate }}
+                </h4>
                 <ul class="list-unstyled ps-3">
-                  <li><i class="bi bi-dot text-warning"></i> Quadriceps</li>
-                  <li><i class="bi bi-dot text-warning"></i> Hamstrings</li>
-                  <li><i class="bi bi-dot text-warning"></i> Glutes</li>
-                  <li><i class="bi bi-dot text-warning"></i> Calves</li>
-                  <li><i class="bi bi-dot text-warning"></i> Core/Abs</li>
+                  <li>
+                    <i class="bi bi-dot text-warning"></i>
+                    {{ "trainers.pushpull.li10" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-warning"></i>
+                    {{ "trainers.pushpull.li11" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-warning"></i>
+                    {{ "trainers.pushpull.li12" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-warning"></i>
+                    {{ "trainers.pushpull.li13" | translate }}
+                  </li>
+                  <li>
+                    <i class="bi bi-dot text-warning"></i>
+                    {{ "trainers.pushpull.li14" | translate }}
+                  </li>
                 </ul>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Workouts Cards -->
       <div class="row mt-4">
         <div class="col-md-4 mb-4">
           <div class="card border-danger border-2 h-100">
             <div class="card-header bg-danger bg-opacity-25">
-              <h3 class="card-title fw-bold text-danger mb-0">Push Day</h3>
+              <h3 class="card-title fw-bold text-danger mb-0">
+                {{ "trainers.pushpull.h3.4" | translate }}
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-danger"></i>
-                  <span>Bench Press</span>
+                  <span> {{ "trainers.pushpull.span1" | translate }} </span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-danger"></i>
-                  <span>Overhead Press</span>
+                  <span>{{ "trainers.pushpull.span2" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-danger"></i>
-                  <span>Incline Dumbbell Press</span>
+                  <span>{{ "trainers.pushpull.span3" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-danger"></i>
-                  <span>Lateral Raises</span>
+                  <span>{{ "trainers.pushpull.span4" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-danger"></i>
-                  <span>+ Isolation exercises for triceps</span>
+                  <span>{{ "trainers.pushpull.span5" | translate }}</span>
                 </li>
               </ul>
               <div class="mt-3">
-                <span class="badge bg-danger bg-opacity-25 text-danger me-2">6 exercises total</span>
-                <span class="badge bg-danger bg-opacity-25 text-danger">45-60 minutes</span>
+                <span class="badge bg-danger bg-opacity-25 text-danger me-2">{{
+                  "trainers.pushpull.span6" | translate
+                }}</span>
+                <span class="badge bg-danger bg-opacity-25 text-danger">{{
+                  "trainers.pushpull.span7" | translate
+                }}</span>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-4 mb-4">
           <div class="card border-success border-2 h-100">
             <div class="card-header bg-success bg-opacity-25">
-              <h3 class="card-title fw-bold text-success mb-0">Pull Day</h3>
+              <h3 class="card-title fw-bold text-success mb-0">
+                {{ "trainers.pushpull.h4.4" | translate }}
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-success"></i>
-                  <span>Deadlifts</span>
+                  <span>{{ "trainers.pushpull.span8" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-success"></i>
-                  <span>Pull-Ups/Lat Pulldowns</span>
+                  <span>{{ "trainers.pushpull.span9" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-success"></i>
-                  <span>Barbell Rows</span>
+                  <span>{{ "trainers.pushpull.span10" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-success"></i>
-                  <span>Face Pulls</span>
+                  <span>{{ "trainers.pushpull.span11" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-success"></i>
-                  <span>+ Isolation exercises for biceps</span>
+                  <span>{{ "trainers.pushpull.span12" | translate }}</span>
                 </li>
               </ul>
               <div class="mt-3">
-                <span class="badge bg-success bg-opacity-25 text-success me-2">6 exercises total</span>
-                <span class="badge bg-success bg-opacity-25 text-success">45-60 minutes</span>
+                <span
+                  class="badge bg-success bg-opacity-25 text-success me-2"
+                  >{{ "trainers.pushpull.span13" | translate }}</span
+                >
+                <span class="badge bg-success bg-opacity-25 text-success">{{
+                  "trainers.pushpull.span14" | translate
+                }}</span>
               </div>
             </div>
           </div>
         </div>
-        
+
         <div class="col-md-4 mb-4">
           <div class="card border-warning border-2 h-100">
             <div class="card-header bg-warning bg-opacity-25">
-              <h3 class="card-title fw-bold text-warning mb-0">Legs Day</h3>
+              <h3 class="card-title fw-bold text-warning mb-0">
+                {{ "trainers.pushpull.h3.5" | translate }}
+              </h3>
             </div>
             <div class="card-body">
               <ul class="list-group list-group-flush">
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-warning"></i>
-                  <span>Squats</span>
+                  <span>{{ "trainers.pushpull.span15" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-warning"></i>
-                  <span>Leg Extension</span>
+                  <span>{{ "trainers.pushpull.span16" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-warning"></i>
-                  <span>Hamstring Curls</span>
+                  <span>{{ "trainers.pushpull.span17" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-warning"></i>
-                  <span>Leg Press</span>
+                  <span>{{ "trainers.pushpull.span18" | translate }}</span>
                 </li>
                 <li class="list-group-item d-flex px-0">
                   <i class="bi bi-dot text-warning"></i>
-                  <span>+ Isolation exercises for calves & core</span>
+                  <span>{{ "trainers.pushpull.span19" | translate }}</span>
                 </li>
               </ul>
               <div class="mt-3">
-                <span class="badge bg-warning bg-opacity-25 text-warning me-2">6 exercises total</span>
-                <span class="badge bg-warning bg-opacity-25 text-warning">45-60 minutes</span>
+                <span
+                  class="badge bg-warning bg-opacity-25 text-warning me-2"
+                  >{{ "trainers.pushpull.span20" | translate }}</span
+                >
+                <span class="badge bg-warning bg-opacity-25 text-warning">{{
+                  "trainers.pushpull.span21" | translate
+                }}</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       <!-- Workout Details Section -->
       <div class="row mt-4">
         <div class="col-12">
-          <h3 class="text-primary mb-4">Workout Details</h3>
-          
-          <div *ngIf="filteredWorkouts.length === 0" class="col-12 text-center my-5">
-            <p>No workouts found. Please select a different plan</p>
+          <h3 class="text-primary mb-4">
+            {{ "trainers.pushpull.h3.6" | translate }}
+          </h3>
+
+          <div
+            *ngIf="filteredWorkouts.length === 0"
+            class="col-12 text-center my-5"
+          >
+            <p>{{ "trainers.pushpull.p5" | translate }}</p>
           </div>
-          
+
           <div *ngFor="let workout of filteredWorkouts" class="col-md-12 mb-4">
             <div class="card">
-              <div class="card-header" 
-                  [ngClass]="{
-                      'bg-danger text-white': workout.day === 'push',
-                      'bg-success text-white': workout.day === 'pull',
-                      'bg-warning text-white': workout.day === 'legs'
-                    }"
-                  style="cursor: pointer;"
-                  (click)="toggleWorkout(workout.day)">
+              <div
+                class="card-header"
+                [ngClass]="{
+                  'bg-danger text-white': workout.day === 'push',
+                  'bg-success text-white': workout.day === 'pull',
+                  'bg-warning text-white': workout.day === 'legs'
+                }"
+                style="cursor: pointer"
+                (click)="toggleWorkout(workout.day)"
+              >
                 <div class="d-flex justify-content-between align-items-center">
                   <div class="d-flex align-items-center">
-                    <h5 class="mb-0">{{workout.day | titlecase}} Day</h5>
-                    <span class="badge bg-light text-dark ms-2">{{workout.muscleGroup}}</span>
+                    <h5 class="mb-0">
+                      {{ workout.day | titlecase }}
+                      Day
+                    </h5>
+                    <span class="badge bg-light text-dark ms-2">{{
+                      workout.muscleGroup
+                    }}</span>
                   </div>
-                  <i class="bi" [ngClass]="isWorkoutExpanded(workout.day) ? 'bi-chevron-up' : 'bi-chevron-down'"></i>
+                  <i
+                    class="bi"
+                    [ngClass]="
+                      isWorkoutExpanded(workout.day)
+                        ? 'bi-chevron-up'
+                        : 'bi-chevron-down'
+                    "
+                  ></i>
                 </div>
               </div>
-              
+
               <div *ngIf="isWorkoutExpanded(workout.day)" class="card-body">
-                <h6>Exercises:</h6>
+                <h6>{{ "trainers.pushpull.h6" | translate }}</h6>
                 <ul class="list-group">
-                  <li *ngFor="let exercise of workout.exercises" class="list-group-item">
-                    <strong class="clickable"  (click)="navigateToExercises(exercise.mg, exercise.name.toLowerCase())" >{{exercise.name}}</strong>
-                    <div>{{exercise.sets}} sets × {{exercise.reps}} reps</div>
-                    <small *ngIf="exercise.notes" class="text-muted">{{exercise.notes}}</small>
+                  <li
+                    *ngFor="let exercise of workout.exercises"
+                    class="list-group-item"
+                  >
+                    <strong
+                      class="clickable"
+                      (click)="
+                        navigateToExercises(
+                          exercise.mg,
+                          exercise.name.toLowerCase()
+                        )
+                      "
+                      >{{ exercise.name }}</strong
+                    >
+                    <div>
+                      {{ exercise.sets }}
+                      {{ "trainers.pushpull.sets" | translate }} ×
+                      {{ exercise.reps }}
+                      {{ "trainers.pushpull.reps" | translate }}
+                    </div>
+                    <small *ngIf="exercise.notes" class="text-muted">{{
+                      exercise.notes
+                    }}</small>
                   </li>
                 </ul>
-                
-                <div class="d-flex justify-content-between mt-3 ">
-                  <span class="badge text-dark" 
-                        [ngClass]="{
-                          'bg-danger bg-opacity-25 text-danger': workout.day === 'push',
-                          'bg-success bg-opacity-25 text-success': workout.day === 'pull',
-                          'bg-warning bg-opacity-25 text-warning': workout.day === 'legs'
-                        }">
-                    Duration: 45-60 minutes
+
+                <div class="d-flex justify-content-between mt-3">
+                  <span
+                    class="badge text-dark"
+                    [ngClass]="{
+                      'bg-danger bg-opacity-25 text-danger':
+                        workout.day === 'push',
+                      'bg-success bg-opacity-25 text-success':
+                        workout.day === 'pull',
+                      'bg-warning bg-opacity-25 text-warning':
+                        workout.day === 'legs'
+                    }"
+                  >
+                    {{ "trainers.pushpull.span22" | translate }}
                   </span>
-                  <span class="badge text-dark"
-                        [ngClass]="{
-                          'bg-danger bg-opacity-25 text-danger': workout.day === 'push',
-                          'bg-success bg-opacity-25 text-success': workout.day === 'pull',
-                          'bg-warning bg-opacity-25 text-warning': workout.day === 'legs'
-                        }">
-                    Intensity: Moderate to High
+                  <span
+                    class="badge text-dark"
+                    [ngClass]="{
+                      'bg-danger bg-opacity-25 text-danger':
+                        workout.day === 'push',
+                      'bg-success bg-opacity-25 text-success':
+                        workout.day === 'pull',
+                      'bg-warning bg-opacity-25 text-warning':
+                        workout.day === 'legs'
+                    }"
+                  >
+                    {{ "trainers.pushpull.span23" | translate }}
                   </span>
                 </div>
               </div>
@@ -329,12 +499,12 @@
           </div>
         </div>
       </div>
-      
+
       <div class="mt-4 pt-3 border-top border-secondary">
         <p class="text-muted small text-center">
-          Note: For best results, progressively increase weight as you get stronger. Rest 60-90 seconds between sets for smaller muscle groups and 2-3 minutes for compound movements.
+          {{ "trainers.pushpull.p6" | translate }}
         </p>
-      </div>
       </div>
     </div>
   </div>
+</div>

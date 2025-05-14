@@ -1,74 +1,84 @@
 <div class="container">
-  <div class="d-flex col-12 mx-auto mt-2">
-    <h1 class="mb-4 mx-auto">Workout Programs</h1>
+  <div class="d-flex col-12 mx-auto my-5">
+    <h1 class="mb-4 mx-auto">
+      {{ "trainers.workoutPrograms.h1" | translate }}
+    </h1>
   </div>
-    
-    <!-- Plan Type Selection -->
-    <div class="plan-selector mb-4">
-      <div class="btn-group border border-2 d-flex justify-content-between">
-        <button 
-          class="btn" 
-          [class.btn-dark]="selectedPlanType === 'push-pull-legs'"
-          [class.btn-outline-]="selectedPlanType !== 'push-pull-legs'"
-          (click)="filterByPlanType('push-pull-legs')">
-          Push Pull Legs
-        </button>
-        <button 
-          class="btn" 
-          [class.btn-dark]="selectedPlanType === 'bro-split'"
-          [class.btn-outline-]="selectedPlanType !== 'bro-split'"
-          (click)="filterByPlanType('bro-split')">
-          Bro Split
-        </button>
-        <button 
-          class="btn" 
-          [class.btn-dark]="selectedPlanType === 'upper-lower'"
-          [class.btn-outline-]="selectedPlanType !== 'upper-lower'"
-          (click)="filterByPlanType('upper-lower')">
-          Upper Lower
-        </button>
-        <button 
-          class="btn" 
-          [class.btn-dark]="selectedPlanType === 'Home workouts'"
-          [class.btn-outline-]="selectedPlanType !== 'Home workouts'"
-          (click)="filterByPlanType('Home workouts')">
-          Home Workouts
-        </button>
-      </div>
-    </div>
 
-    <!-- Program Components -->
-    <!-- <div class="program-container">
-      <app-push-pull-legs 
+  <!-- Plan Type Selection -->
+  <div class="plan-selector mb-4">
+    <div class="btn-group border border-2 d-flex justify-content-between">
+      <button
+        class="btn"
+        [class.btn-dark]="selectedPlanType === 'push-pull-legs'"
+        [class.btn-outline-]="selectedPlanType !== 'push-pull-legs'"
+        (click)="filterByPlanType('push-pull-legs')"
+      >
+        {{ "trainers.workoutPrograms.btn1" | translate }}
+      </button>
+      <button
+        class="btn"
+        [class.btn-dark]="selectedPlanType === 'bro-split'"
+        [class.btn-outline-]="selectedPlanType !== 'bro-split'"
+        (click)="filterByPlanType('bro-split')"
+      >
+        {{ "trainers.workoutPrograms.btn2" | translate }}
+      </button>
+      <button
+        class="btn"
+        [class.btn-dark]="selectedPlanType === 'upper-lower'"
+        [class.btn-outline-]="selectedPlanType !== 'upper-lower'"
+        (click)="filterByPlanType('upper-lower')"
+      >
+        {{ "trainers.workoutPrograms.btn3" | translate }}
+      </button>
+      <button
+        class="btn"
+        [class.btn-dark]="selectedPlanType === 'Home workouts'"
+        [class.btn-outline-]="selectedPlanType !== 'Home workouts'"
+        (click)="filterByPlanType('Home workouts')"
+      >
+        {{ "trainers.workoutPrograms.btn4" | translate }}
+      </button>
+    </div>
+  </div>
+
+  <!-- Program Components -->
+  <!-- <div class="program-container">
+      <app-push-pull-legs
         *ngIf="selectedPlanType === 'push-pull-legs'">
       </app-push-pull-legs>
 
-      <app-bro-split 
+      <app-bro-split
         *ngIf="selectedPlanType === 'bro-split'">
       </app-bro-split>
 
-      <app-upper-lower-split 
+      <app-upper-lower-split
         *ngIf="selectedPlanType === 'upper-lower'">
       </app-upper-lower-split>
     </div> -->
-       
-    <div class="d-flex col-12 justify-content-between flex-wrap">
-      <app-push-pull-legs class="col-12"
-      *ngIf="selectedPlanType === 'push-pull-legs'">
-      </app-push-pull-legs>
-      
-      <app-bro-split class="col-12"
+
+  <div class="d-flex col-12 justify-content-between flex-wrap">
+    <app-push-pull-legs
+      class="col-12"
+      *ngIf="selectedPlanType === 'push-pull-legs'"
+    >
+    </app-push-pull-legs>
+
+    <app-bro-split
+      class="col-12"
       *ngIf="selectedPlanType === 'bro-split'"
-      ></app-bro-split>
+    ></app-bro-split>
 
-      <app-upper-lower-split class="col-12"
+    <app-upper-lower-split
+      class="col-12"
       *ngIf="selectedPlanType === 'upper-lower'"
-      ></app-upper-lower-split>
+    ></app-upper-lower-split>
 
-      <app-home-workout
-      *ngIf="selectedPlanType === 'Home workouts'" class="col-12" 
-      >
-      </app-home-workout>
-
-    </div>
+    <app-home-workout
+      *ngIf="selectedPlanType === 'Home workouts'"
+      class="col-12"
+    >
+    </app-home-workout>
+  </div>
 </div>

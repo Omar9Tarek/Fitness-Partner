@@ -52,21 +52,18 @@
       <!-- icon -->
       <i class="fa-solid fa-robot second-icon mt-4"></i>
       <h4 class="text-center fw-bold my-3">
-        <!-- {{ "nutrition.cards.card1.h4" | translate }} -->
-          AI Meal Planner
+        {{ "nutrition.cards.card1.h4" | translate }}
       </h4>
       <p class="px-5 fs-5 fw-medium">
-        <!-- {{ "nutrition.cards.card1.p" | translate }} -->
-        let our AI build a customized meal plan based on your personal data, InBody results, and goals
+        {{ "nutrition.cards.card1.p" | translate }}
       </p>
       <a
         [routerLink]="['/nutrition']"
         fragment="fat-calculator"
         class="btn button-design"
-        style="margin-top: 5.2rem;"
+        style="margin-top: 5.2rem"
       >
-        <!-- {{ "nutrition.cards.card1.link" | translate }} -->
-          Use AI Meal Planner
+        {{ "nutrition.cards.card1.link" | translate }}
       </a>
     </div>
     <div
@@ -81,7 +78,7 @@
         {{ "nutrition.cards.card3.h4" | translate }}
       </h4>
       <p class="px-5 fs-5 fw-medium">
-        Take the stress out of eating right. Choose from carefully designed meal plans — whether your goal is fat loss, muscle gain, or better health
+        {{ "nutrition.cards.card3.p" | translate }}
       </p>
       <a
         [routerLink]="['/nutrition']"
@@ -103,13 +100,14 @@
         {{ "nutrition.cards.card2.h4" | translate }}
       </h4>
       <p class="px-5 fs-5 fw-medium">
-        <strong>Want to know what’s in your food?</strong> Just search items like apples or chicken in Know Your Food and get quick nutrition facts calories, fats, proteins, and more to help you eat smarter.
+        <strong> {{ "nutrition.cards.card2.strong" | translate }} </strong>
+        {{ "nutrition.cards.card2.p" | translate }}
       </p>
       <a
         [routerLink]="['/nutrition']"
         fragment="know-food"
         class="btn button-design mb-2"
-        >
+      >
         {{ "nutrition.cards.card2.link" | translate }}
       </a>
     </div>
@@ -120,7 +118,7 @@
 <!-- AI diet tool Section -->
 <div class="container py-4 my-5">
   <h2 class="text-center fw-bold fs-1" style="color: #ff9933">
-    🤖Your Personalized Meal Planner
+    🤖 {{ "nutrition.ai.h2" | translate }}
   </h2>
   <p class="text-center text-secondary fs-5 mb-4">
     {{ "trainers.ai.p" | translate }}
@@ -139,9 +137,7 @@
   </div>
 
   <div class="divider-with-text">
-    <span class="divider-text">
-     OR
-    </span>
+    <span class="divider-text"> {{ "nutrition.ai.span" | translate }} </span>
   </div>
   <!-- Meal Planner Section -->
   <div class="row my-4" id="meal-planner">
@@ -150,14 +146,13 @@
     </div>
   </div>
 
-  <hr>
+  <hr />
   <!-- Food Nutrition Section -->
   <div class="row mb-4" id="know-food">
     <div class="col-12">
       <app-food-nutrition></app-food-nutrition>
     </div>
   </div>
-
 
   <!-- Meal Comparison Section -->
   <div class="row mb-4">
