@@ -1,0 +1,13 @@
+<div *ngIf="submissions.length > 0; else noSubmissions">
+  <div *ngFor="let submission of submissions" class="submission-card">
+    <p><strong>Name:</strong> {{ submission.name }}</p>
+    <p><strong>Email:</strong> {{ submission.email }}</p>
+    <p><strong>Message:</strong> {{ submission.message }}</p>
+    <p><strong>Date:</strong> {{ submission.date | date: 'short' }}</p>
+    <hr />
+  </div>
+</div>
+
+<ng-template #noSubmissions>
+  <p>No submissions available.</p>
+</ng-template>

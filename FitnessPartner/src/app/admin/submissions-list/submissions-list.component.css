@@ -1,0 +1,63 @@
+
+      .submissions-container {
+        max-width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 16px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      
+      .submissions-container h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 28px;
+      }
+      
+      .no-submissions {
+        text-align: center;
+        padding: 20px;
+        font-style: italic;
+        color: #666;
+      }
+      
+      .submissions-list {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      .submission-card {
+        padding: 15px;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        border-left: 4px solid #cc0000;
+      }
+      
+      .submission-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      
+      .submission-header h3 {
+        margin: 0;
+        font-size: 18px;
+      }
+      
+      .submission-date {
+        font-size: 12px;
+        color: #666;
+      }
+      
+      .submission-email {
+        margin-bottom: 10px;
+        color: #555;
+        font-weight: bold;
+      }
+      
+      .submission-message {
+        white-space: pre-wrap;
+        line-height: 1.4;
+      }

@@ -90,6 +90,7 @@
       <!-- <div>Monthly limit reached: {{ monthlyRequestExhausted }}</div> -->
 <div *ngIf="lastRequestDate">Last request: {{ lastRequestDate | date: 'dd,MM,yy' }}</div>
       <div *ngIf="monthlyRequestExhausted">Days until next: {{ daysUntilNextRequest }}</div>
+      <div>You can generate a plan once per month</div>
     </div>
   </form>
 
