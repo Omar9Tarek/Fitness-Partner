@@ -1,6 +1,27 @@
 <div class="container my-3 p-4 border rounded bg-light" style="max-width: 600px">
   <h4 class="text-center mb-4">📝 {{ "trainers.dietForm.h4" | translate }}</h4>
 
+  <!-- Monthly request limit warning -->
+  <div *ngIf="userId && monthlyRequestExhausted" class="alert alert-warning mb-4">
+    <i class="bi bi-exclamation-triangle-fill me-2"></i>
+    <strong>{{ "Diet plans monthly limit reached" | translate }}</strong>
+    <p class="mb-1 mt-2">{{ "Last generated plan" | translate }}: {{ getLastRequestDateFormatted() }}</p>
+    <p>{{ "You can try again in" | translate }}: {{ daysUntilNextRequest }}</p>
+    <button class="btn btn-sm btn-outline-primary mt-2" (click)="viewMeasurements()">
+      {{ "View Previous Plans" | translate }}
+    </button>
+  </div>
+
+  <!-- Login prompt for users not logged in -->
+  <div *ngIf="!userId" class="alert alert-info mb-4">
+    <i class="bi bi-info-circle-fill me-2"></i>
+    {{ "Login to generate your personalized plan " | translate }}
+    <button class="btn btn-sm btn-primary ms-2" (click)="navigateToLogin()">
+      {{ "Login" | translate }}
+    </button>
+  </div>
+
+  <!-- Form will only show if user hasn't reached monthly limit -->
   <form (ngSubmit)="submit()" #dietForm="ngForm">
     <div class="row g-3">
       <div class="col-md-6">
@@ -49,13 +70,27 @@
       </div>
     </div>
 
-    <button class="btn btn-success mt-4 w-100" [disabled]="loading || !dietForm.form.valid">
-      {{
-      loading
-      ? ("trainers.dietForm.loadRslt1" | translate)
-      : ("trainers.dietForm.loadRslt2" | translate)
-      }}
+    <!-- Generate diet plan button with dynamic text -->
+    <button class="btn mt-4 w-100" 
+            [ngClass]="{'btn-success': !monthlyRequestExhausted, 'btn-secondary': monthlyRequestExhausted}"
+            [disabled]="loading || !dietForm.form.valid || monthlyRequestExhausted">
+      <ng-container *ngIf="loading">
+        {{ "trainers.dietForm.loadRslt1" | translate }}
+      </ng-container>
+      <ng-container *ngIf="!loading && monthlyRequestExhausted">
+        {{ "Next plan is available in " | translate }} {{ daysUntilNextRequest }} {{ "days" | translate }}
+      </ng-container>
+      <ng-container *ngIf="!loading && !monthlyRequestExhausted">
+        {{ "trainers.dietForm.loadRslt2" | translate }}
+      </ng-container>
     </button>
+    
+    <!-- Debug info - remove in production -->
+    <div class="mt-2 small text-muted">
+      <!-- <div>Monthly limit reached: {{ monthlyRequestExhausted }}</div> -->
+<div *ngIf="lastRequestDate">Last request: {{ lastRequestDate | date: 'dd,MM,yy' }}</div>
+      <div *ngIf="monthlyRequestExhausted">Days until next: {{ daysUntilNextRequest }}</div>
+    </div>
   </form>
 
   <div *ngIf="result" class="mt-4">
@@ -79,20 +114,20 @@
     
     <!-- Show this message if measurements were saved -->
     <div *ngIf="measurementsSaved" class="alert alert-success mt-3">
-      <i class="bi bi-check-circle-fill me-2"></i> Your measurements and diet plan have been saved to your profile.
+      <i class="bi bi-check-circle-fill me-2"></i> {{ "Plan Generated and Saved successfully" | translate }}
       <button class="btn btn-sm btn-outline-success ms-2" (click)="viewMeasurements()">
-        View Measurements History
+        {{ "Check plans history" | translate }}
       </button>
     </div>
 
-    <!-- 1 plan/month limitation -->
+    <!-- Monthly limit error message -->
     <div *ngIf="errorMessage" class="alert alert-danger mt-3">
-      {{ errorMessage }}
+      <i class="bi bi-exclamation-circle-fill me-2"></i> {{ errorMessage }}
     </div>
 
     <!-- Show this message if user is not logged in -->
     <div *ngIf="!userId" class="alert alert-info mt-3">
-      <i class="bi bi-info-circle-fill me-2"></i> Log in to save your measurements and diet plan to your profile.
+      <i class="bi bi-info-circle-fill me-2"></i> {{ "Login to generate your personalized plan !ToSave" | translate }}
     </div>
   </div>
 
@@ -100,5 +135,7 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 
-  <div *ngIf="error" class="alert alert-danger mt-3">{{ error }}</div>
+  <div *ngIf="error" class="alert alert-danger mt-3">
+    <i class="bi bi-exclamation-circle-fill me-2"></i> {{ error }}
+  </div>
 </div>

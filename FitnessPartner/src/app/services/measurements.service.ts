@@ -17,7 +17,7 @@ export interface UserMeasurement {
   goal: string;
   dietPlan: string;
   date: Date;
-  id:any;
+  id: any;
 }
 
 @Injectable({
@@ -43,27 +43,43 @@ export class MeasurementsService {
       Authorization: `Bearer ${token || ''}`,
     });
   }
-  // Save new measurements and diet plan
-saveMeasurements(userId: string, measurementData: any, dietPlan: string): Observable<any> {
-  const payload = {
-    ...measurementData,
-    dietPlan,
-    date: new Date()
-  };
 
-  return this.http.post(
-    `${this.apiUrl}/users/${userId}/measurements`,
-    payload,
-    { headers: this.getAuthHeaders() }
-  ).pipe(
-    tap(response => console.log('Measurements saved:', response)),
-    catchError(error => {
-      const errorMessage = error.error?.message || 'Failed to save measurements';
-      console.error('Error saving measurements:', errorMessage);
-      return throwError(() => new Error(errorMessage));
-    })
-  );
-}
+  // Check if user can make a new request this month
+  canMakeRequest(userId: string): Observable<boolean> {
+    return this.http.get<boolean>(
+      `${this.apiUrl}/users/${userId}/measurements/can-request`,
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      tap(canRequest => console.log('Can make request:', canRequest)),
+      catchError(error => {
+        console.error('Error checking request eligibility:', error);
+        return throwError(() => new Error('Failed to check request eligibility'));
+      })
+    );
+  }
+
+  // Save new measurements and diet plan
+  saveMeasurements(userId: string, measurementData: any, dietPlan: string): Observable<any> {
+    const payload = {
+      ...measurementData,
+      dietPlan,
+      date: new Date()
+    };
+
+    return this.http.post(
+      `${this.apiUrl}/users/${userId}/measurements`,
+      payload,
+      { headers: this.getAuthHeaders() }
+    ).pipe(
+      tap(response => console.log('Measurements saved:', response)),
+      catchError(error => {
+        const errorMessage = error.error?.message || 'Failed to save measurements';
+        console.error('Error saving measurements:', errorMessage);
+        return throwError(() => new Error(errorMessage));
+      })
+    );
+  }
+
   // Get all measurements for a user
   getUserMeasurements(userId: string): Observable<UserMeasurement[]> {
     return this.http.get<UserMeasurement[]>(
