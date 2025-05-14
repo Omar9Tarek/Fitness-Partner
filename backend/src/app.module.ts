@@ -17,6 +17,7 @@ import { GymMachineModule } from './gym-machine/gym-machine.module';
 import { DietGeminiModule } from './diet-ai/diet-ai.module';
 import { WorkoutsModule } from './workouts/workout.model';
 import { MeasurementsModule } from './measurement/measurements.module';
+import { ContactModule } from './contact/contact.module';
 
 @Module({
   imports: [
@@ -44,7 +45,8 @@ import { MeasurementsModule } from './measurement/measurements.module';
   GymMachineModule,
   DietGeminiModule,
   WorkoutsModule,
-  MeasurementsModule
+  MeasurementsModule,
+  ContactModule
   ],
   controllers: [AppController],
   providers: [AppService],

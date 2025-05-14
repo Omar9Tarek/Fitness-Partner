@@ -43,6 +43,7 @@ import { DietFormComponent } from './diet-form/diet-form.component';
 import { AdminTrainersComponent } from './admin/admin-trainers/admin-trainers.component';
 import { MeasurementsComponent } from './profile/measurements/measurements.component';
 import { LocationStrategy, PathLocationStrategy } from '@angular/common';
+import { SubmissionsListComponent } from './admin/submissions-list/submissions-list.component';
 export const routes: Routes = [
   { path: 'home', redirectTo: '', pathMatch: 'full' },
   { path: '', component: HomeComponent },
@@ -90,6 +91,7 @@ export const routes: Routes = [
       { path: 'trainers', component: AdminTrainersComponent },
       // { path: 'nutrition', component: AdminNutritionComponent },
       // { path: 'settings', component: AdminSettingsComponent },
+      { path: 'submissions', component: SubmissionsListComponent },
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
